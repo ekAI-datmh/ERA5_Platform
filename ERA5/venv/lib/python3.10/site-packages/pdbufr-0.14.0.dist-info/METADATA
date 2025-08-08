@@ -1,0 +1,83 @@
+Metadata-Version: 2.4
+Name: pdbufr
+Version: 0.14.0
+Summary: Pandas reader for the BUFR format using ecCodes.
+Author-email: "European Centre for Medium-Range Weather Forecasts (ECMWF)" <software.support@ecmwf.int>
+License: Apache License Version 2.0
+Project-URL: Documentation, https://pdbufr.readthedocs.io/en/latest/
+Project-URL: Homepage, https://github.com/ecmwf/pdbufr
+Keywords: bufr,eccodes,pandas
+Classifier: Development Status :: 4 - Beta
+Classifier: Intended Audience :: Developers
+Classifier: License :: OSI Approved :: Apache Software License
+Classifier: Operating System :: OS Independent
+Classifier: Programming Language :: Python :: 3 :: Only
+Classifier: Programming Language :: Python :: 3.6
+Classifier: Programming Language :: Python :: 3.7
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Programming Language :: Python :: 3.9
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Programming Language :: Python :: 3.11
+Classifier: Programming Language :: Python :: 3.12
+Classifier: Programming Language :: Python :: 3.13
+Classifier: Programming Language :: Python :: Implementation :: CPython
+Requires-Python: >=3.6
+Description-Content-Type: text/markdown
+License-File: LICENSE
+Requires-Dist: attrs
+Requires-Dist: eccodes
+Requires-Dist: pandas
+Requires-Dist: pint
+Provides-Extra: dev
+Requires-Dist: pdbufr[docs,tests]; extra == "dev"
+Provides-Extra: docs
+Requires-Dist: nbsphinx; extra == "docs"
+Requires-Dist: pygments>=2.6.1; extra == "docs"
+Requires-Dist: sphinx>=7.3.7; extra == "docs"
+Requires-Dist: sphinx-copybutton; extra == "docs"
+Requires-Dist: sphinx-issues; extra == "docs"
+Requires-Dist: sphinx-rtd-theme; extra == "docs"
+Provides-Extra: tests
+Requires-Dist: flake8; extra == "tests"
+Requires-Dist: nbconvert; extra == "tests"
+Requires-Dist: nbformat; extra == "tests"
+Requires-Dist: pytest; extra == "tests"
+Requires-Dist: pytest-cov; extra == "tests"
+Requires-Dist: requests; extra == "tests"
+Dynamic: license-file
+
+# pdbufr
+
+[![PyPI version fury.io](https://badge.fury.io/py/pdbufr.svg)](https://pypi.python.org/pypi/pdbufr/)
+[![PyPI pyversions](https://img.shields.io/pypi/pyversions/pdbufr.svg)](https://pypi.python.org/pypi/pdbufr/)
+
+*pdbufr* is a Python package implementing a [Pandas](https://pandas.pydata.org) reader for the BUFR format using  [ecCodes](https://confluence.ecmwf.int/display/ECC).
+
+## Documentation
+
+The documentation can be found at https://pdbufr.readthedocs.io/.
+
+## Install
+
+Install via `pip` with:
+
+```
+$ pip install pdbufr
+```
+
+More details, such as how to install any necessary binaries, can be found  at https://pdbufr.readthedocs.io/en/latest/install.html.
+
+## License
+
+```
+Copyright 2019- European Centre for Medium-Range Weather Forecasts (ECMWF).
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at: http://www.apache.org/licenses/LICENSE-2.0.
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+```

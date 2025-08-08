@@ -1,0 +1,222 @@
+2025-08-06 11:04:51,462 - INFO - Reading 10 sample grids from ERA5/Grid_50K_MatchedDates.geojson...
+2025-08-06 11:04:52,712 - INFO - [2024-09-26T00:00:00] Watch our [Forum](https://forum.ecmwf.int/) for Announcements, news and other discussed topics.
+2025-08-06 11:04:52,713 - INFO - Attempt 1: Downloading data/era5_daily/grib/2015/08/000000000000000001e7_2015_08.grib...
+2025-08-06 11:04:53,926 - INFO - Request ID is 59518568-ba58-4433-ba57-518d178905e8
+2025-08-06 11:04:54,314 - INFO - status has been updated to accepted
+2025-08-06 11:05:04,213 - INFO - status has been updated to running
+2025-08-06 11:05:09,653 - INFO - status has been updated to failed
+2025-08-06 11:05:10,378 - ERROR - Attempt 1: Error downloading data/era5_daily/grib/2015/08/000000000000000001e7_2015_08.grib: 400 Client Error: Bad Request for url: https://cds.climate.copernicus.eu/api/retrieve/v1/jobs/59518568-ba58-4433-ba57-518d178905e8/results
+The job has failed
+The job failed with: FileNotFoundError
+2025-08-06 11:05:10,378 - INFO - Attempt 2: Downloading data/era5_daily/grib/2015/08/000000000000000001e7_2015_08.grib...
+2025-08-06 11:05:11,627 - INFO - Request ID is 07be55a5-2e78-4df5-95db-a5643e8fdb98
+2025-08-06 11:05:12,011 - INFO - status has been updated to accepted
+2025-08-06 11:05:21,718 - INFO - status has been updated to running
+2025-08-06 11:05:27,153 - INFO - status has been updated to failed
+2025-08-06 11:05:27,913 - ERROR - Attempt 2: Error downloading data/era5_daily/grib/2015/08/000000000000000001e7_2015_08.grib: 400 Client Error: Bad Request for url: https://cds.climate.copernicus.eu/api/retrieve/v1/jobs/07be55a5-2e78-4df5-95db-a5643e8fdb98/results
+The job has failed
+The job failed with: FileNotFoundError
+2025-08-06 11:05:27,914 - ERROR - Failed to download data/era5_daily/grib/2015/08/000000000000000001e7_2015_08.grib
+2025-08-06 11:05:29,017 - INFO - [2024-09-26T00:00:00] Watch our [Forum](https://forum.ecmwf.int/) for Announcements, news and other discussed topics.
+2025-08-06 11:05:29,018 - INFO - Attempt 1: Downloading data/era5_daily/grib/2015/09/000000000000000001e7_2015_09.grib...
+2025-08-06 11:05:30,213 - INFO - Request ID is 9629d074-bf57-445a-b628-c6c65060c252
+2025-08-06 11:05:30,573 - INFO - status has been updated to accepted
+2025-08-06 11:05:40,171 - INFO - status has been updated to failed
+2025-08-06 11:05:40,909 - ERROR - Attempt 1: Error downloading data/era5_daily/grib/2015/09/000000000000000001e7_2015_09.grib: 400 Client Error: Bad Request for url: https://cds.climate.copernicus.eu/api/retrieve/v1/jobs/9629d074-bf57-445a-b628-c6c65060c252/results
+The job has failed
+The job failed with: FileNotFoundError
+2025-08-06 11:05:40,909 - INFO - Attempt 2: Downloading data/era5_daily/grib/2015/09/000000000000000001e7_2015_09.grib...
+2025-08-06 11:05:42,433 - INFO - Request ID is a06caf49-480b-40f4-897d-650e07e81cc2
+2025-08-06 11:05:42,807 - INFO - status has been updated to accepted
+2025-08-06 11:05:52,446 - INFO - status has been updated to running
+2025-08-06 11:05:57,892 - INFO - status has been updated to failed
+2025-08-06 11:05:58,621 - ERROR - Attempt 2: Error downloading data/era5_daily/grib/2015/09/000000000000000001e7_2015_09.grib: 400 Client Error: Bad Request for url: https://cds.climate.copernicus.eu/api/retrieve/v1/jobs/a06caf49-480b-40f4-897d-650e07e81cc2/results
+The job has failed
+The job failed with: FileNotFoundError
+2025-08-06 11:05:58,622 - ERROR - Failed to download data/era5_daily/grib/2015/09/000000000000000001e7_2015_09.grib
+2025-08-06 11:05:59,744 - INFO - [2024-09-26T00:00:00] Watch our [Forum](https://forum.ecmwf.int/) for Announcements, news and other discussed topics.
+2025-08-06 11:05:59,744 - INFO - Attempt 1: Downloading data/era5_daily/grib/2015/10/000000000000000001e7_2015_10.grib...
+2025-08-06 11:06:01,276 - INFO - Request ID is bdae5c94-810d-45df-8138-7c5d5110f089
+2025-08-06 11:06:01,644 - INFO - status has been updated to accepted
+2025-08-06 11:06:11,285 - INFO - status has been updated to running
+2025-08-06 11:06:16,738 - INFO - status has been updated to failed
+2025-08-06 11:06:17,501 - ERROR - Attempt 1: Error downloading data/era5_daily/grib/2015/10/000000000000000001e7_2015_10.grib: 400 Client Error: Bad Request for url: https://cds.climate.copernicus.eu/api/retrieve/v1/jobs/bdae5c94-810d-45df-8138-7c5d5110f089/results
+The job has failed
+The job failed with: FileNotFoundError
+2025-08-06 11:06:17,501 - INFO - Attempt 2: Downloading data/era5_daily/grib/2015/10/000000000000000001e7_2015_10.grib...
+2025-08-06 11:06:18,933 - INFO - Request ID is 25004616-592d-4df6-9164-2e9a32f059ef
+2025-08-06 11:06:19,301 - INFO - status has been updated to accepted
+2025-08-06 11:06:42,463 - INFO - status has been updated to failed
+2025-08-06 11:06:43,205 - ERROR - Attempt 2: Error downloading data/era5_daily/grib/2015/10/000000000000000001e7_2015_10.grib: 400 Client Error: Bad Request for url: https://cds.climate.copernicus.eu/api/retrieve/v1/jobs/25004616-592d-4df6-9164-2e9a32f059ef/results
+The job has failed
+The job failed with: FileNotFoundError
+2025-08-06 11:06:43,206 - ERROR - Failed to download data/era5_daily/grib/2015/10/000000000000000001e7_2015_10.grib
+2025-08-06 11:06:44,364 - INFO - [2024-09-26T00:00:00] Watch our [Forum](https://forum.ecmwf.int/) for Announcements, news and other discussed topics.
+2025-08-06 11:06:44,364 - INFO - Attempt 1: Downloading data/era5_daily/grib/2015/11/000000000000000001e7_2015_11.grib...
+2025-08-06 11:06:45,614 - INFO - Request ID is 1cf85884-fe99-4ae4-81d3-237b5d0e4084
+2025-08-06 11:06:45,977 - INFO - status has been updated to accepted
+2025-08-06 11:06:55,599 - INFO - status has been updated to running
+2025-08-06 11:07:01,034 - INFO - status has been updated to failed
+2025-08-06 11:07:01,773 - ERROR - Attempt 1: Error downloading data/era5_daily/grib/2015/11/000000000000000001e7_2015_11.grib: 400 Client Error: Bad Request for url: https://cds.climate.copernicus.eu/api/retrieve/v1/jobs/1cf85884-fe99-4ae4-81d3-237b5d0e4084/results
+The job has failed
+The job failed with: FileNotFoundError
+2025-08-06 11:07:01,773 - INFO - Attempt 2: Downloading data/era5_daily/grib/2015/11/000000000000000001e7_2015_11.grib...
+2025-08-06 11:07:03,019 - INFO - Request ID is faa69518-8967-4532-81bd-41768f9e4145
+2025-08-06 11:07:03,393 - INFO - status has been updated to accepted
+2025-08-06 11:07:13,231 - INFO - status has been updated to failed
+2025-08-06 11:07:13,971 - ERROR - Attempt 2: Error downloading data/era5_daily/grib/2015/11/000000000000000001e7_2015_11.grib: 400 Client Error: Bad Request for url: https://cds.climate.copernicus.eu/api/retrieve/v1/jobs/faa69518-8967-4532-81bd-41768f9e4145/results
+The job has failed
+The job failed with: FileNotFoundError
+2025-08-06 11:07:13,971 - ERROR - Failed to download data/era5_daily/grib/2015/11/000000000000000001e7_2015_11.grib
+2025-08-06 11:07:15,263 - INFO - [2024-09-26T00:00:00] Watch our [Forum](https://forum.ecmwf.int/) for Announcements, news and other discussed topics.
+2025-08-06 11:07:15,263 - INFO - Attempt 1: Downloading data/era5_daily/grib/2015/12/000000000000000001e7_2015_12.grib...
+2025-08-06 11:07:16,477 - INFO - Request ID is 4dbc42c1-ad2f-476f-a863-c12da272189b
+2025-08-06 11:07:16,860 - INFO - status has been updated to accepted
+2025-08-06 11:07:29,441 - INFO - status has been updated to running
+2025-08-06 11:07:34,877 - INFO - status has been updated to accepted
+2025-08-06 11:07:42,837 - INFO - status has been updated to failed
+2025-08-06 11:07:43,690 - ERROR - Attempt 1: Error downloading data/era5_daily/grib/2015/12/000000000000000001e7_2015_12.grib: 400 Client Error: Bad Request for url: https://cds.climate.copernicus.eu/api/retrieve/v1/jobs/4dbc42c1-ad2f-476f-a863-c12da272189b/results
+The job has failed
+The job failed with: FileNotFoundError
+2025-08-06 11:07:43,691 - INFO - Attempt 2: Downloading data/era5_daily/grib/2015/12/000000000000000001e7_2015_12.grib...
+2025-08-06 11:07:45,222 - INFO - Request ID is 4a7e5601-5fbb-44db-8b37-8d4c4fecda38
+2025-08-06 11:07:45,611 - INFO - status has been updated to accepted
+2025-08-06 11:08:00,665 - INFO - status has been updated to failed
+2025-08-06 11:08:01,393 - ERROR - Attempt 2: Error downloading data/era5_daily/grib/2015/12/000000000000000001e7_2015_12.grib: 400 Client Error: Bad Request for url: https://cds.climate.copernicus.eu/api/retrieve/v1/jobs/4a7e5601-5fbb-44db-8b37-8d4c4fecda38/results
+The job has failed
+The job failed with: FileNotFoundError
+2025-08-06 11:08:01,393 - ERROR - Failed to download data/era5_daily/grib/2015/12/000000000000000001e7_2015_12.grib
+2025-08-06 11:08:02,510 - INFO - [2024-09-26T00:00:00] Watch our [Forum](https://forum.ecmwf.int/) for Announcements, news and other discussed topics.
+2025-08-06 11:08:02,510 - INFO - Attempt 1: Downloading data/era5_daily/grib/2016/01/000000000000000001e7_2016_01.grib...
+2025-08-06 11:08:03,720 - INFO - Request ID is 4b16ace0-01a9-4c10-9aad-e95fe3ab31ea
+2025-08-06 11:08:04,087 - INFO - status has been updated to accepted
+2025-08-06 11:08:19,741 - INFO - status has been updated to failed
+2025-08-06 11:08:20,481 - ERROR - Attempt 1: Error downloading data/era5_daily/grib/2016/01/000000000000000001e7_2016_01.grib: 400 Client Error: Bad Request for url: https://cds.climate.copernicus.eu/api/retrieve/v1/jobs/4b16ace0-01a9-4c10-9aad-e95fe3ab31ea/results
+The job has failed
+The job failed with: FileNotFoundError
+2025-08-06 11:08:20,481 - INFO - Attempt 2: Downloading data/era5_daily/grib/2016/01/000000000000000001e7_2016_01.grib...
+2025-08-06 11:08:21,751 - INFO - Request ID is acaf27be-9443-468f-8f3d-8b01982e8bcd
+2025-08-06 11:08:22,116 - INFO - status has been updated to accepted
+2025-08-06 11:08:31,773 - INFO - status has been updated to failed
+2025-08-06 11:08:32,715 - ERROR - Attempt 2: Error downloading data/era5_daily/grib/2016/01/000000000000000001e7_2016_01.grib: 400 Client Error: Bad Request for url: https://cds.climate.copernicus.eu/api/retrieve/v1/jobs/acaf27be-9443-468f-8f3d-8b01982e8bcd/results
+The job has failed
+The job failed with: FileNotFoundError
+2025-08-06 11:08:32,715 - ERROR - Failed to download data/era5_daily/grib/2016/01/000000000000000001e7_2016_01.grib
+2025-08-06 11:08:33,819 - INFO - [2024-09-26T00:00:00] Watch our [Forum](https://forum.ecmwf.int/) for Announcements, news and other discussed topics.
+2025-08-06 11:08:33,820 - INFO - Attempt 1: Downloading data/era5_daily/grib/2016/02/000000000000000001e7_2016_02.grib...
+2025-08-06 11:08:35,168 - INFO - Request ID is d82a2f83-dfb1-4ab2-a36e-cc7820e49bdf
+2025-08-06 11:08:35,533 - INFO - status has been updated to accepted
+2025-08-06 11:08:50,797 - INFO - status has been updated to failed
+2025-08-06 11:08:51,519 - ERROR - Attempt 1: Error downloading data/era5_daily/grib/2016/02/000000000000000001e7_2016_02.grib: 400 Client Error: Bad Request for url: https://cds.climate.copernicus.eu/api/retrieve/v1/jobs/d82a2f83-dfb1-4ab2-a36e-cc7820e49bdf/results
+The job has failed
+The job failed with: FileNotFoundError
+2025-08-06 11:08:51,519 - INFO - Attempt 2: Downloading data/era5_daily/grib/2016/02/000000000000000001e7_2016_02.grib...
+2025-08-06 11:08:52,728 - INFO - Request ID is 0e076ced-45cc-4407-ae70-2b2a8149c876
+2025-08-06 11:08:53,086 - INFO - status has been updated to accepted
+2025-08-06 11:09:16,283 - INFO - status has been updated to failed
+2025-08-06 11:09:17,025 - ERROR - Attempt 2: Error downloading data/era5_daily/grib/2016/02/000000000000000001e7_2016_02.grib: 400 Client Error: Bad Request for url: https://cds.climate.copernicus.eu/api/retrieve/v1/jobs/0e076ced-45cc-4407-ae70-2b2a8149c876/results
+The job has failed
+The job failed with: FileNotFoundError
+2025-08-06 11:09:17,025 - ERROR - Failed to download data/era5_daily/grib/2016/02/000000000000000001e7_2016_02.grib
+2025-08-06 11:09:18,300 - INFO - [2024-09-26T00:00:00] Watch our [Forum](https://forum.ecmwf.int/) for Announcements, news and other discussed topics.
+2025-08-06 11:09:18,301 - INFO - Attempt 1: Downloading data/era5_daily/grib/2016/03/000000000000000001e7_2016_03.grib...
+2025-08-06 11:09:19,586 - INFO - Request ID is 06b9dc5a-be39-4317-86f7-6c733bf0a531
+2025-08-06 11:09:19,951 - INFO - status has been updated to accepted
+2025-08-06 11:15:03,850 - INFO - Reading 5 sample grids from ERA5/Grid_50K_MatchedDates.geojson...
+2025-08-06 11:15:05,008 - INFO - [2024-09-26T00:00:00] Watch our [Forum](https://forum.ecmwf.int/) for Announcements, news and other discussed topics.
+2025-08-06 11:15:05,008 - INFO - Attempt 1: Downloading data/era5_daily/grib/2024/01/0000000000000000019c_2024_01.grib...
+2025-08-06 11:15:06,212 - INFO - Request ID is 83040e44-6672-4b24-9c38-8a1435f04a5a
+2025-08-06 11:15:06,602 - INFO - status has been updated to accepted
+2025-08-06 11:15:16,339 - INFO - status has been updated to failed
+2025-08-06 11:15:17,479 - ERROR - Attempt 1: Error downloading data/era5_daily/grib/2024/01/0000000000000000019c_2024_01.grib: 400 Client Error: Bad Request for url: https://cds.climate.copernicus.eu/api/retrieve/v1/jobs/83040e44-6672-4b24-9c38-8a1435f04a5a/results
+The job has failed
+The job failed with: FileNotFoundError
+2025-08-06 11:15:17,479 - INFO - Attempt 2: Downloading data/era5_daily/grib/2024/01/0000000000000000019c_2024_01.grib...
+2025-08-06 11:15:19,209 - INFO - Request ID is aa970c17-0f84-499d-846d-d20201f6ccb2
+2025-08-06 11:15:19,578 - INFO - status has been updated to accepted
+2025-08-06 11:15:34,628 - INFO - status has been updated to failed
+2025-08-06 11:15:35,368 - ERROR - Attempt 2: Error downloading data/era5_daily/grib/2024/01/0000000000000000019c_2024_01.grib: 400 Client Error: Bad Request for url: https://cds.climate.copernicus.eu/api/retrieve/v1/jobs/aa970c17-0f84-499d-846d-d20201f6ccb2/results
+The job has failed
+The job failed with: FileNotFoundError
+2025-08-06 11:15:35,369 - ERROR - Failed to download data/era5_daily/grib/2024/01/0000000000000000019c_2024_01.grib
+2025-08-06 11:15:38,475 - INFO - [2024-09-26T00:00:00] Watch our [Forum](https://forum.ecmwf.int/) for Announcements, news and other discussed topics.
+2025-08-06 11:15:38,475 - INFO - Attempt 1: Downloading data/era5_daily/grib/2024/02/0000000000000000019c_2024_02.grib...
+2025-08-06 11:15:39,653 - INFO - Request ID is 68eac82e-0b52-4ff1-ac6f-827756c06bf8
+2025-08-06 11:15:40,021 - INFO - status has been updated to accepted
+2025-08-06 11:15:55,198 - INFO - status has been updated to failed
+2025-08-06 11:15:55,955 - ERROR - Attempt 1: Error downloading data/era5_daily/grib/2024/02/0000000000000000019c_2024_02.grib: 400 Client Error: Bad Request for url: https://cds.climate.copernicus.eu/api/retrieve/v1/jobs/68eac82e-0b52-4ff1-ac6f-827756c06bf8/results
+The job has failed
+The job failed with: FileNotFoundError
+2025-08-06 11:15:55,955 - INFO - Attempt 2: Downloading data/era5_daily/grib/2024/02/0000000000000000019c_2024_02.grib...
+2025-08-06 11:15:57,229 - INFO - Request ID is 0a97fa97-5055-4c95-aac5-8b08432bb578
+2025-08-06 11:15:57,601 - INFO - status has been updated to accepted
+2025-08-06 11:16:12,749 - INFO - status has been updated to failed
+2025-08-06 11:16:13,495 - ERROR - Attempt 2: Error downloading data/era5_daily/grib/2024/02/0000000000000000019c_2024_02.grib: 400 Client Error: Bad Request for url: https://cds.climate.copernicus.eu/api/retrieve/v1/jobs/0a97fa97-5055-4c95-aac5-8b08432bb578/results
+The job has failed
+The job failed with: FileNotFoundError
+2025-08-06 11:16:13,495 - ERROR - Failed to download data/era5_daily/grib/2024/02/0000000000000000019c_2024_02.grib
+2025-08-06 11:16:17,080 - INFO - [2024-09-26T00:00:00] Watch our [Forum](https://forum.ecmwf.int/) for Announcements, news and other discussed topics.
+2025-08-06 11:16:17,080 - INFO - Attempt 1: Downloading data/era5_daily/grib/2024/03/0000000000000000019c_2024_03.grib...
+2025-08-06 11:16:18,428 - INFO - Request ID is c037bf7c-fadd-48b5-849c-83bbceba4cb8
+2025-08-06 11:16:18,801 - INFO - status has been updated to accepted
+2025-08-06 11:23:03,965 - INFO - Reading 3 sample grids from ERA5/Grid_50K_MatchedDates.geojson...
+2025-08-06 11:23:05,106 - INFO - [2024-09-26T00:00:00] Watch our [Forum](https://forum.ecmwf.int/) for Announcements, news and other discussed topics.
+2025-08-06 11:23:05,106 - INFO - Attempt 1: Downloading data/era5_test/grib/2024/01/000000000000000001f2_2024_01.grib...
+2025-08-06 11:23:06,338 - INFO - Request ID is 275adbd9-66a9-4b5b-a954-68d27ace68b9
+2025-08-06 11:23:06,773 - INFO - status has been updated to accepted
+2025-08-06 11:23:16,437 - INFO - status has been updated to running
+2025-08-06 11:23:29,853 - INFO - status has been updated to successful
+2025-08-06 11:23:30,760 - INFO - Downloading https://object-store.os-api.cci2.ecmwf.int:443/cci2-prod-cache-1/2025-08-06/d57899c5bf1778113c30396e5bbe1555.grib
+2025-08-06 11:23:33,092 - INFO - Success: data/era5_test/grib/2024/01/000000000000000001f2_2024_01.grib (0.00 MB, 27.99s)
+2025-08-06 11:23:33,092 - INFO - Downloaded data/era5_test/grib/2024/01/000000000000000001f2_2024_01.grib
+2025-08-06 11:23:37,194 - INFO - [2024-09-26T00:00:00] Watch our [Forum](https://forum.ecmwf.int/) for Announcements, news and other discussed topics.
+2025-08-06 11:23:37,195 - INFO - Attempt 1: Downloading data/era5_test/grib/2024/01/0000000000000000000a_2024_01.grib...
+2025-08-06 11:23:38,507 - INFO - Request ID is 8af6c533-c0e5-4ae7-b716-616e3ba5c146
+2025-08-06 11:23:38,874 - INFO - status has been updated to accepted
+2025-08-06 11:23:54,206 - INFO - status has been updated to running
+2025-08-06 11:25:17,807 - INFO - Reading 10 sample grids from ERA5/Grid_50K_MatchedDates.geojson...
+2025-08-06 11:25:17,813 - INFO - Processing grid 00000000000000000051 (F-48-91-A)
+2025-08-06 11:25:19,098 - INFO - [2024-09-26T00:00:00] Watch our [Forum](https://forum.ecmwf.int/) for Announcements, news and other discussed topics.
+2025-08-06 11:25:19,098 - INFO - Attempt 1: Downloading data/era5_daily/grib/2015/01/00000000000000000051_2015_01_daily.grib...
+2025-08-06 11:25:20,294 - INFO - Request ID is 56ba8895-e4eb-4ece-8550-5d9463573bf4
+2025-08-06 11:25:20,676 - INFO - status has been updated to accepted
+2025-08-06 11:25:30,563 - INFO - status has been updated to failed
+2025-08-06 11:25:31,316 - ERROR - Attempt 1: Error downloading data/era5_daily/grib/2015/01/00000000000000000051_2015_01_daily.grib: 400 Client Error: Bad Request for url: https://cds.climate.copernicus.eu/api/retrieve/v1/jobs/56ba8895-e4eb-4ece-8550-5d9463573bf4/results
+The job has failed
+The job failed with: FileNotFoundError
+2025-08-06 11:25:31,316 - INFO - Attempt 2: Downloading data/era5_daily/grib/2015/01/00000000000000000051_2015_01_daily.grib...
+2025-08-06 11:25:32,651 - INFO - Request ID is e79b8ac7-2689-436e-b65f-ae1330f5c3a1
+2025-08-06 11:25:33,027 - INFO - status has been updated to accepted
+2025-08-06 11:25:42,641 - INFO - status has been updated to failed
+2025-08-06 11:25:43,379 - ERROR - Attempt 2: Error downloading data/era5_daily/grib/2015/01/00000000000000000051_2015_01_daily.grib: 400 Client Error: Bad Request for url: https://cds.climate.copernicus.eu/api/retrieve/v1/jobs/e79b8ac7-2689-436e-b65f-ae1330f5c3a1/results
+The job has failed
+The job failed with: FileNotFoundError
+2025-08-06 11:25:43,379 - ERROR - Failed to download daily data: data/era5_daily/grib/2015/01/00000000000000000051_2015_01_daily.grib
+2025-08-06 11:25:44,503 - INFO - [2024-09-26T00:00:00] Watch our [Forum](https://forum.ecmwf.int/) for Announcements, news and other discussed topics.
+2025-08-06 11:25:44,503 - INFO - Attempt 1: Downloading data/era5_hourly/grib/2015/01/00000000000000000051_2015_01_hourly.grib...
+2025-08-06 11:25:45,915 - INFO - Request ID is f85c71c5-ed3d-4360-89e5-5f6356e412b1
+2025-08-06 11:25:46,278 - INFO - status has been updated to accepted
+2025-08-06 11:25:52,166 - INFO - status has been updated to running
+2025-08-06 11:25:55,913 - INFO - status has been updated to failed
+2025-08-06 11:25:56,642 - ERROR - Attempt 1: Error downloading data/era5_hourly/grib/2015/01/00000000000000000051_2015_01_hourly.grib: 400 Client Error: Bad Request for url: https://cds.climate.copernicus.eu/api/retrieve/v1/jobs/f85c71c5-ed3d-4360-89e5-5f6356e412b1/results
+The job has failed
+The job failed with: FileNotFoundError
+2025-08-06 11:25:56,642 - INFO - Attempt 2: Downloading data/era5_hourly/grib/2015/01/00000000000000000051_2015_01_hourly.grib...
+2025-08-06 11:25:57,980 - INFO - Request ID is 84468eed-5dc0-4edc-aa37-793505ccbf96
+2025-08-06 11:25:58,346 - INFO - status has been updated to accepted
+2025-08-06 11:29:26,923 - INFO - Reading 10 sample grids from ERA5/Grid_50K_MatchedDates.geojson...
+2025-08-06 11:29:26,930 - INFO - Processing grid 00000000000000000238 (C-49-25-D)
+2025-08-06 11:29:28,099 - INFO - [2024-09-26T00:00:00] Watch our [Forum](https://forum.ecmwf.int/) for Announcements, news and other discussed topics.
+2025-08-06 11:29:28,099 - INFO - Attempt 1: Downloading data/era5_working/grib/2024/01/00000000000000000238_2024_01.grib...
+2025-08-06 11:29:29,393 - INFO - Request ID is 52cfc3dd-3194-4dc1-a605-480c0998af1c
+2025-08-06 11:29:29,842 - INFO - status has been updated to accepted
+2025-08-06 11:29:45,167 - INFO - status has been updated to running
+2025-08-06 11:30:05,905 - INFO - status has been updated to successful
+2025-08-06 11:30:06,696 - INFO - Downloading https://object-store.os-api.cci2.ecmwf.int:443/cci2-prod-cache-3/2025-08-06/8d0a40551782f3abb5a7f0fb5033aabd.grib
+2025-08-06 11:30:09,895 - INFO - Success: data/era5_working/grib/2024/01/00000000000000000238_2024_01.grib (0.04 MB, 41.80s)
+2025-08-06 11:30:09,895 - INFO - Downloaded data: data/era5_working/grib/2024/01/00000000000000000238_2024_01.grib
+2025-08-06 11:30:15,994 - INFO - [2024-09-26T00:00:00] Watch our [Forum](https://forum.ecmwf.int/) for Announcements, news and other discussed topics.
+2025-08-06 11:30:15,995 - INFO - Attempt 1: Downloading data/era5_working/grib/2024/02/00000000000000000238_2024_02.grib...
+2025-08-06 11:30:17,334 - INFO - Request ID is 12d5bff5-c4be-43eb-bb7f-d2bc5f193b30
+2025-08-06 11:30:17,696 - INFO - status has been updated to accepted
+2025-08-06 11:30:27,474 - INFO - status has been updated to running
