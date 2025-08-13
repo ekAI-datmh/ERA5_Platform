@@ -25,12 +25,20 @@ from rasterio.mask import mask
 import xarray as xr
 import pygrib
 
-from .config import *
-from .utils import (
-    setup_logging, load_grid_data, get_grid_bboxes, check_intersection,
-    parse_date_range, generate_date_list, save_metadata, format_file_size,
-    create_progress_callback, calculate_bbox_area
-)
+try:
+    from .config import *
+    from .utils import (
+        setup_logging, load_grid_data, get_grid_bboxes, check_intersection,
+        parse_date_range, generate_date_list, save_metadata, format_file_size,
+        create_progress_callback, calculate_bbox_area
+    )
+except ImportError:
+    from config import *
+    from utils import (
+        setup_logging, load_grid_data, get_grid_bboxes, check_intersection,
+        parse_date_range, generate_date_list, save_metadata, format_file_size,
+        create_progress_callback, calculate_bbox_area
+    )
 
 
 class DataSearcher:

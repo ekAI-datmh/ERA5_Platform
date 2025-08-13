@@ -1,0 +1,154 @@
+2025-08-13 09:55:22,113 - DataPreprocessor - INFO - Loaded 604 grid bounding boxes
+2025-08-13 09:55:22,113 - DataPreprocessor - INFO - Starting preprocessing of directory: /media/ekai2/data2tb/datmh/Platform/data/era5_vietnam/grib/2024/01
+2025-08-13 09:55:22,114 - DataPreprocessor - INFO - Target resolution: 30m
+2025-08-13 09:55:22,114 - DataPreprocessor - INFO - Output format: tif
+2025-08-13 09:55:22,114 - DataPreprocessor - WARNING - No input files found
+2025-08-13 09:55:22,697 - DataSearcher - INFO - Loaded 604 grid bounding boxes
+2025-08-13 09:55:22,697 - DataSearcher - INFO - Starting data search for bbox: ((106.5, 10.8), (106.8, 10.6))
+2025-08-13 09:55:22,697 - DataSearcher - INFO - Time period: 2024-01-01 to 2024-01-03
+2025-08-13 09:55:22,698 - DataSearcher - WARNING - No relevant files found
+2025-08-13 09:55:23,285 - DataSearcher - INFO - Loaded 604 grid bounding boxes
+2025-08-13 09:55:23,285 - DataSearcher - INFO - Starting data search for bbox: ((104.5, 10.5), (106.5, 8.5))
+2025-08-13 09:55:23,285 - DataSearcher - INFO - Time period: 2024-01-01 to 2024-01-03
+2025-08-13 09:55:23,287 - DataSearcher - WARNING - No relevant files found
+2025-08-13 09:55:23,288 - ERA5Downloader - ERROR - Failed to initialize CDS client: CDS API key not found. Please set CDS_API_KEY environment variable or create .cdsapirc file.
+2025-08-13 09:55:23,288 - ERA5_Land_Examples - ERROR - Example execution error: CDS API key not found. Please set CDS_API_KEY environment variable or create .cdsapirc file.
+2025-08-13 09:57:36,790 - ERA5Downloader - ERROR - Failed to initialize CDS client: CDS API key not found. Please set CDS_API_KEY environment variable or create .cdsapirc file.
+2025-08-13 09:57:57,310 - ERA5Downloader - INFO - CDS client initialized successfully
+2025-08-13 09:57:57,310 - ERA5Downloader - INFO - Starting ERA5_Land download: 2024-01-01 to 2024-01-01
+2025-08-13 09:57:57,310 - ERA5Downloader - INFO - Dataset: hourly, Format: grib
+2025-08-13 09:57:57,310 - ERA5Downloader - INFO - Variables: 2 variables
+2025-08-13 09:57:57,310 - ERA5Downloader - INFO - Bounding box: {'north': 23.5, 'south': 8.5, 'west': 102.0, 'east': 110.0}
+2025-08-13 09:57:57,311 - ERA5Downloader - INFO - Estimated download size: 2.0 MB
+2025-08-13 09:57:57,311 - ERA5Downloader - INFO - Executing 2 download tasks with 2 workers
+2025-08-13 09:57:57,607 - ERA5Downloader - ERROR - Failed: 2m_temperature_2024_01_01_00.grib - 404 Client Error: Not Found for url: https://cds.climate.copernicus.eu/api/v2/retrieve/v1/processes/reanalysis-era5-land
+Climate Data Store API endpoint not found
+
+It seems you are trying to access an API endpoint that does not exist.
+
+It is possible that you are pointing to an outdated API endpoint which has been removed/renamed.
+If you are using the standard cdsapi Python library, please ensure that:
+
+- your cdsapi version is updated
+- your .cdsapirc file is correctly configured ("url" should be set to https://cds.climate.copernicus.eu/api and "key" should be set to your API key WITHOUT the `<UID>:` prefix)
+
+If you are trying to access a REST API endpoint directly, please refer to the documentation for more information on how to access REST API endpoints:
+https://cds.climate.copernicus.eu/how-to-api
+2025-08-13 09:57:59,609 - ERA5Downloader - ERROR - Failed: total_precipitation_2024_01_01_00.grib - 404 Client Error: Not Found for url: https://cds.climate.copernicus.eu/api/v2/retrieve/v1/processes/reanalysis-era5-land
+Climate Data Store API endpoint not found
+
+It seems you are trying to access an API endpoint that does not exist.
+
+It is possible that you are pointing to an outdated API endpoint which has been removed/renamed.
+If you are using the standard cdsapi Python library, please ensure that:
+
+- your cdsapi version is updated
+- your .cdsapirc file is correctly configured ("url" should be set to https://cds.climate.copernicus.eu/api and "key" should be set to your API key WITHOUT the `<UID>:` prefix)
+
+If you are trying to access a REST API endpoint directly, please refer to the documentation for more information on how to access REST API endpoints:
+https://cds.climate.copernicus.eu/how-to-api
+2025-08-13 09:58:01,612 - ERA5Downloader - INFO - Download completed!
+2025-08-13 09:58:01,612 - ERA5Downloader - INFO - Total requests: 2
+2025-08-13 09:58:01,612 - ERA5Downloader - INFO - Successful: 0
+2025-08-13 09:58:01,612 - ERA5Downloader - INFO - Failed: 2
+2025-08-13 09:58:01,612 - ERA5Downloader - INFO - Total size: 0.0 B
+2025-08-13 09:58:01,612 - ERA5Downloader - INFO - Duration: 0:00:04.301133
+2025-08-13 09:58:38,707 - ERA5Downloader - INFO - CDS client initialized successfully
+2025-08-13 09:58:38,708 - ERA5Downloader - INFO - Starting ERA5_Land download: 2024-01-01 to 2024-01-01
+2025-08-13 09:58:38,708 - ERA5Downloader - INFO - Dataset: hourly, Format: grib
+2025-08-13 09:58:38,708 - ERA5Downloader - INFO - Variables: 2 variables
+2025-08-13 09:58:38,708 - ERA5Downloader - INFO - Bounding box: {'north': 23.5, 'south': 8.5, 'west': 102.0, 'east': 110.0}
+2025-08-13 09:58:38,708 - ERA5Downloader - INFO - Estimated download size: 2.0 MB
+2025-08-13 09:58:38,708 - ERA5Downloader - INFO - Executing 2 download tasks with 2 workers
+2025-08-13 09:58:38,998 - ERA5Downloader - ERROR - Failed: 2m_temperature_2024_01_01_00.grib - 404 Client Error: Not Found for url: https://cds.climate.copernicus.eu/api/v2/retrieve/v1/processes/reanalysis-era5-single-levels
+Climate Data Store API endpoint not found
+
+It seems you are trying to access an API endpoint that does not exist.
+
+It is possible that you are pointing to an outdated API endpoint which has been removed/renamed.
+If you are using the standard cdsapi Python library, please ensure that:
+
+- your cdsapi version is updated
+- your .cdsapirc file is correctly configured ("url" should be set to https://cds.climate.copernicus.eu/api and "key" should be set to your API key WITHOUT the `<UID>:` prefix)
+
+If you are trying to access a REST API endpoint directly, please refer to the documentation for more information on how to access REST API endpoints:
+https://cds.climate.copernicus.eu/how-to-api
+2025-08-13 09:58:40,999 - ERA5Downloader - ERROR - Failed: total_precipitation_2024_01_01_00.grib - 404 Client Error: Not Found for url: https://cds.climate.copernicus.eu/api/v2/retrieve/v1/processes/reanalysis-era5-single-levels
+Climate Data Store API endpoint not found
+
+It seems you are trying to access an API endpoint that does not exist.
+
+It is possible that you are pointing to an outdated API endpoint which has been removed/renamed.
+If you are using the standard cdsapi Python library, please ensure that:
+
+- your cdsapi version is updated
+- your .cdsapirc file is correctly configured ("url" should be set to https://cds.climate.copernicus.eu/api and "key" should be set to your API key WITHOUT the `<UID>:` prefix)
+
+If you are trying to access a REST API endpoint directly, please refer to the documentation for more information on how to access REST API endpoints:
+https://cds.climate.copernicus.eu/how-to-api
+2025-08-13 09:58:43,001 - ERA5Downloader - INFO - Download completed!
+2025-08-13 09:58:43,001 - ERA5Downloader - INFO - Total requests: 2
+2025-08-13 09:58:43,002 - ERA5Downloader - INFO - Successful: 0
+2025-08-13 09:58:43,002 - ERA5Downloader - INFO - Failed: 2
+2025-08-13 09:58:43,002 - ERA5Downloader - INFO - Total size: 0.0 B
+2025-08-13 09:58:43,002 - ERA5Downloader - INFO - Duration: 0:00:04.293700
+2025-08-13 09:59:06,229 - ERA5Downloader - INFO - CDS client initialized successfully
+2025-08-13 09:59:06,229 - ERA5Downloader - INFO - Starting ERA5_Land download: 2024-01-01 to 2024-01-01
+2025-08-13 09:59:06,229 - ERA5Downloader - INFO - Dataset: hourly, Format: grib
+2025-08-13 09:59:06,229 - ERA5Downloader - INFO - Variables: 2 variables
+2025-08-13 09:59:06,229 - ERA5Downloader - INFO - Bounding box: {'north': 23.5, 'south': 8.5, 'west': 102.0, 'east': 110.0}
+2025-08-13 09:59:06,229 - ERA5Downloader - INFO - Estimated download size: 2.0 MB
+2025-08-13 09:59:06,229 - ERA5Downloader - INFO - Executing 2 download tasks with 2 workers
+2025-08-13 09:59:48,016 - ERA5Downloader - INFO - Download completed!
+2025-08-13 09:59:48,017 - ERA5Downloader - INFO - Total requests: 2
+2025-08-13 09:59:48,017 - ERA5Downloader - INFO - Successful: 2
+2025-08-13 09:59:48,017 - ERA5Downloader - INFO - Failed: 0
+2025-08-13 09:59:48,017 - ERA5Downloader - INFO - Total size: 97.0 KB
+2025-08-13 09:59:48,017 - ERA5Downloader - INFO - Duration: 0:00:41.787335
+2025-08-13 10:02:16,837 - DataPreprocessor - INFO - Loaded 604 grid bounding boxes
+2025-08-13 10:02:16,837 - DataPreprocessor - INFO - Starting preprocessing of directory: /media/ekai2/data2tb/datmh/Platform/data/era5_vietnam/grib/2024/01
+2025-08-13 10:02:16,837 - DataPreprocessor - INFO - Target resolution: 30m
+2025-08-13 10:02:16,837 - DataPreprocessor - INFO - Output format: tif
+2025-08-13 10:02:16,837 - DataPreprocessor - WARNING - No input files found
+2025-08-13 10:02:17,423 - DataSearcher - INFO - Loaded 604 grid bounding boxes
+2025-08-13 10:02:17,424 - DataSearcher - INFO - Starting data search for bbox: ((106.5, 10.8), (106.8, 10.6))
+2025-08-13 10:02:17,424 - DataSearcher - INFO - Time period: 2024-01-01 to 2024-01-03
+2025-08-13 10:02:17,426 - DataSearcher - WARNING - No relevant files found
+2025-08-13 10:02:18,014 - DataSearcher - INFO - Loaded 604 grid bounding boxes
+2025-08-13 10:02:18,014 - DataSearcher - INFO - Starting data search for bbox: ((104.5, 10.5), (106.5, 8.5))
+2025-08-13 10:02:18,014 - DataSearcher - INFO - Time period: 2024-01-01 to 2024-01-03
+2025-08-13 10:02:18,016 - DataSearcher - WARNING - No relevant files found
+2025-08-13 10:02:28,907 - ERA5Downloader - INFO - CDS client initialized successfully
+2025-08-13 10:03:11,867 - DataPreprocessor - INFO - Loaded 604 grid bounding boxes
+2025-08-13 10:03:11,867 - Test_Preprocessing - ERROR - Preprocessing error: DataPreprocessor.preprocess_file() got an unexpected keyword argument 'output_dir'
+2025-08-13 10:04:18,513 - DataPreprocessor - INFO - Loaded 604 grid bounding boxes
+2025-08-13 10:04:18,513 - DataPreprocessor - INFO - Preprocessing file: /media/ekai2/data2tb/datmh/Platform/data/era5_vietnam/grib/2024/01/2m_temperature_2024_01_01_00.grib
+2025-08-13 10:04:18,647 - DataPreprocessor - ERROR - Failed to process: /media/ekai2/data2tb/datmh/Platform/data/era5_vietnam/grib/2024/01/2m_temperature_2024_01_01_00.grib - name 'subprocess' is not defined
+2025-08-13 10:04:18,647 - Test_Preprocessing - ERROR - Preprocessing error: expected str, bytes or os.PathLike object, not dict
+2025-08-13 10:04:44,381 - DataPreprocessor - INFO - Loaded 604 grid bounding boxes
+2025-08-13 10:04:44,381 - DataPreprocessor - INFO - Preprocessing file: /media/ekai2/data2tb/datmh/Platform/data/era5_vietnam/grib/2024/01/2m_temperature_2024_01_01_00.grib
+2025-08-13 10:04:44,509 - DataPreprocessor - ERROR - Failed to process: /media/ekai2/data2tb/datmh/Platform/data/era5_vietnam/grib/2024/01/2m_temperature_2024_01_01_00.grib - Command '['cdo', '-s', '-f', 'nc', 'copy', '/media/ekai2/data2tb/datmh/Platform/data/era5_vietnam/grib/2024/01/2m_temperature_2024_01_01_00.grib', '/tmp/tmp0v77uizx/intermediate_2m_temperature_2024_01_01_00.nc']' returned non-zero exit status 1.
+2025-08-13 10:11:18,975 - DataPreprocessor - INFO - Loaded 604 grid bounding boxes
+2025-08-13 10:11:18,976 - DataPreprocessor - INFO - Preprocessing file: /media/ekai2/data2tb/datmh/Platform/data/era5_vietnam/grib/2024/01/2m_temperature_2024_01_01_00.grib
+2025-08-13 10:11:18,976 - DataPreprocessor - INFO - Converting GRIB to NetCDF: /media/ekai2/data2tb/datmh/Platform/data/era5_vietnam/grib/2024/01/2m_temperature_2024_01_01_00.grib
+2025-08-13 10:11:19,204 - DataPreprocessor - INFO - Converted GRIB to NetCDF: /tmp/era5_land_25243/2m_temperature_2024_01_01_00.nc
+2025-08-13 10:11:19,566 - DataPreprocessor - ERROR - Failed to process: /tmp/era5_land_25243/2m_temperature_2024_01_01_00.nc - 'Dataset' object has no attribute 'lon'
+2025-08-13 10:11:45,764 - DataPreprocessor - INFO - Loaded 604 grid bounding boxes
+2025-08-13 10:11:45,764 - DataPreprocessor - INFO - Preprocessing file: /media/ekai2/data2tb/datmh/Platform/data/era5_vietnam/grib/2024/01/2m_temperature_2024_01_01_00.grib
+2025-08-13 10:11:45,764 - DataPreprocessor - INFO - Converting GRIB to NetCDF: /media/ekai2/data2tb/datmh/Platform/data/era5_vietnam/grib/2024/01/2m_temperature_2024_01_01_00.grib
+2025-08-13 10:11:45,992 - DataPreprocessor - INFO - Converted GRIB to NetCDF: /tmp/era5_land_25431/2m_temperature_2024_01_01_00.nc
+2025-08-13 10:11:46,085 - DataPreprocessor - ERROR - Failed to process: /tmp/era5_land_25431/2m_temperature_2024_01_01_00.nc - 'Dataset' object has no attribute 'lon'
+2025-08-13 10:12:42,420 - DataPreprocessor - INFO - Loaded 604 grid bounding boxes
+2025-08-13 10:12:42,420 - DataPreprocessor - INFO - Preprocessing file: /media/ekai2/data2tb/datmh/Platform/data/era5_vietnam/grib/2024/01/2m_temperature_2024_01_01_00.grib
+2025-08-13 10:12:42,420 - DataPreprocessor - INFO - Converting GRIB to NetCDF: /media/ekai2/data2tb/datmh/Platform/data/era5_vietnam/grib/2024/01/2m_temperature_2024_01_01_00.grib
+2025-08-13 10:12:42,655 - DataPreprocessor - INFO - Converted GRIB to NetCDF: /tmp/era5_land_25858/2m_temperature_2024_01_01_00.nc
+2025-08-13 10:12:42,816 - DataPreprocessor - ERROR - Failed to process: /tmp/era5_land_25858/2m_temperature_2024_01_01_00.nc - bilinear is not a valid interpolator for interpolating over multiple dimensions.
+2025-08-13 10:13:17,593 - DataPreprocessor - INFO - Loaded 604 grid bounding boxes
+2025-08-13 10:13:17,594 - DataPreprocessor - INFO - Preprocessing file: /media/ekai2/data2tb/datmh/Platform/data/era5_vietnam/grib/2024/01/2m_temperature_2024_01_01_00.grib
+2025-08-13 10:13:17,594 - DataPreprocessor - INFO - Converting GRIB to NetCDF: /media/ekai2/data2tb/datmh/Platform/data/era5_vietnam/grib/2024/01/2m_temperature_2024_01_01_00.grib
+2025-08-13 10:13:17,847 - DataPreprocessor - INFO - Converted GRIB to NetCDF: /tmp/era5_land_26073/2m_temperature_2024_01_01_00.nc
+2025-08-13 10:13:18,071 - DataPreprocessor - ERROR - Failed to process: /tmp/era5_land_26073/2m_temperature_2024_01_01_00.nc - No module named 'scipy'
+2025-08-13 10:13:33,772 - DataPreprocessor - INFO - Loaded 604 grid bounding boxes
+2025-08-13 10:13:33,772 - DataPreprocessor - INFO - Preprocessing file: /media/ekai2/data2tb/datmh/Platform/data/era5_vietnam/grib/2024/01/2m_temperature_2024_01_01_00.grib
+2025-08-13 10:13:33,772 - DataPreprocessor - INFO - Converting GRIB to NetCDF: /media/ekai2/data2tb/datmh/Platform/data/era5_vietnam/grib/2024/01/2m_temperature_2024_01_01_00.grib
+2025-08-13 10:13:34,331 - DataPreprocessor - INFO - Converted GRIB to NetCDF: /tmp/era5_land_26275/2m_temperature_2024_01_01_00.nc

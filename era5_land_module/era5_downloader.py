@@ -19,12 +19,20 @@ import cdsapi
 import xarray as xr
 import numpy as np
 
-from .config import *
-from .utils import (
-    setup_logging, create_cds_client, parse_date_range, generate_date_list,
-    create_storage_paths, validate_file, save_metadata, format_file_size,
-    estimate_download_size, create_progress_callback
-)
+try:
+    from .config import *
+    from .utils import (
+        setup_logging, create_cds_client, parse_date_range, generate_date_list,
+        create_storage_paths, validate_file, save_metadata, format_file_size,
+        estimate_download_size, create_progress_callback
+    )
+except ImportError:
+    from config import *
+    from utils import (
+        setup_logging, create_cds_client, parse_date_range, generate_date_list,
+        create_storage_paths, validate_file, save_metadata, format_file_size,
+        estimate_download_size, create_progress_callback
+    )
 
 
 class ERA5Downloader:

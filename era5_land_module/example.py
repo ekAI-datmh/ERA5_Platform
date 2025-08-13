@@ -14,9 +14,12 @@ from datetime import datetime, timedelta
 # Add the module to the path
 sys.path.insert(0, str(Path(__file__).parent))
 
-from era5_land_module import ERA5Downloader, DataPreprocessor, DataSearcher
-from era5_land_module.config import *
-from era5_land_module.utils import setup_logging
+# Import directly from local modules
+from era5_downloader import ERA5Downloader
+from data_preprocessor import DataPreprocessor
+from data_searcher import DataSearcher
+from config import *
+from utils import setup_logging
 
 
 def example_1_download_vietnam_data():

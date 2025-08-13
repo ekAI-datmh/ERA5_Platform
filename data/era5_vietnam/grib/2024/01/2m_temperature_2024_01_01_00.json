@@ -1,0 +1,23 @@
+{
+  "variable": "2m_temperature",
+  "date": "2024-01-01T00:00:00",
+  "year": 2024,
+  "month": 1,
+  "day": 1,
+  "hour": 0,
+  "dataset_type": "hourly",
+  "format_type": "grib",
+  "bbox": {
+    "north": 23.5,
+    "south": 8.5,
+    "west": 102.0,
+    "east": 110.0
+  },
+  "file_size": 49586,
+  "file_size_formatted": "48.4 KB",
+  "download_timestamp": "2025-08-13T09:59:34.192268",
+  "processing_info": {
+    "downloader_version": "1.0.0",
+    "cds_dataset": "reanalysis-era5-single-levels"
+  }
+}

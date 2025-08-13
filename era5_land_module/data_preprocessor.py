@@ -10,6 +10,7 @@ This module provides functionality to preprocess ERA5_Land data including:
 
 import os
 import logging
+import subprocess
 from pathlib import Path
 from typing import Dict, List, Tuple, Optional, Union
 import json
@@ -29,12 +30,20 @@ from rasterio.fill import fillnodata
 import xarray as xr
 import pygrib
 
-from .config import *
-from .utils import (
-    setup_logging, load_grid_data, get_grid_bboxes, ensure_cdo,
-    parse_resolution_to_degrees, write_cdo_gridfile, cdo_remapbil_to_grid,
-    cleanup_temp_files, save_metadata, format_file_size, create_progress_callback
-)
+try:
+    from .config import *
+    from .utils import (
+        setup_logging, load_grid_data, get_grid_bboxes, ensure_cdo,
+        parse_resolution_to_degrees, write_cdo_gridfile, cdo_remapbil_to_grid,
+        cleanup_temp_files, save_metadata, format_file_size, create_progress_callback
+    )
+except ImportError:
+    from config import *
+    from utils import (
+        setup_logging, load_grid_data, get_grid_bboxes, ensure_cdo,
+        parse_resolution_to_degrees, write_cdo_gridfile, cdo_remapbil_to_grid,
+        cleanup_temp_files, save_metadata, format_file_size, create_progress_callback
+    )
 
 
 class DataPreprocessor:
@@ -189,6 +198,19 @@ class DataPreprocessor:
                 output_file = self._generate_output_path(input_file)
             
             # Create output directory
+            output_file.parent.mkdir(parents=True, exist_ok=True)
+            
+            # Convert GRIB to NetCDF if needed
+            if input_file.suffix.lower() == '.grib':
+                self.logger.info(f"Converting GRIB to NetCDF: {input_file}")
+                netcdf_file = self._convert_grib_to_netcdf(input_file)
+                if netcdf_file is None:
+                    return {
+                        'success': False,
+                        'file_size': 0,
+                        'error': f"Failed to convert GRIB to NetCDF: {input_file}"
+                    }
+                input_file = netcdf_file
             output_file.parent.mkdir(parents=True, exist_ok=True)
             
             # Process file
@@ -430,8 +452,16 @@ class DataPreprocessor:
             
             # Get bounds from input file
             with xr.open_dataset(input_file) as ds:
-                lon_min, lon_max = float(ds.lon.min()), float(ds.lon.max())
-                lat_min, lat_max = float(ds.lat.min()), float(ds.lat.max())
+                # Handle different coordinate names
+                if 'longitude' in ds.coords:
+                    lon_min, lon_max = float(ds.longitude.min()), float(ds.longitude.max())
+                else:
+                    lon_min, lon_max = float(ds.lon.min()), float(ds.lon.max())
+                    
+                if 'latitude' in ds.coords:
+                    lat_min, lat_max = float(ds.latitude.min()), float(ds.latitude.max())
+                else:
+                    lat_min, lat_max = float(ds.lat.min()), float(ds.lat.max())
             
             # Write grid file
             write_cdo_gridfile(lon_min, lon_max, lat_min, lat_max, 
@@ -447,15 +477,26 @@ class DataPreprocessor:
             var_name = list(ds.data_vars.keys())[0]
             
             # Create target coordinates
-            lon_target = np.arange(ds.lon.min(), ds.lon.max(), self.target_resolution_deg)
-            lat_target = np.arange(ds.lat.min(), ds.lat.max(), self.target_resolution_deg)
-            
-            # Resample
-            ds_resampled = ds.interp(
-                lon=lon_target,
-                lat=lat_target,
-                method=self.interpolation_method
-            )
+            if 'longitude' in ds.coords:
+                lon_target = np.arange(ds.longitude.min(), ds.longitude.max(), self.target_resolution_deg)
+                lat_target = np.arange(ds.latitude.min(), ds.latitude.max(), self.target_resolution_deg)
+                
+                # Resample
+                ds_resampled = ds.interp(
+                    longitude=lon_target,
+                    latitude=lat_target,
+                    method='linear'  # xarray only supports 'linear', 'nearest', 'zero', 'slinear', 'quadratic', 'cubic'
+                )
+            else:
+                lon_target = np.arange(ds.lon.min(), ds.lon.max(), self.target_resolution_deg)
+                lat_target = np.arange(ds.lat.min(), ds.lat.max(), self.target_resolution_deg)
+                
+                # Resample
+                ds_resampled = ds.interp(
+                    lon=lon_target,
+                    lat=lat_target,
+                    method='linear'  # xarray only supports 'linear', 'nearest', 'zero', 'slinear', 'quadratic', 'cubic'
+                )
             
             # Save resampled data
             ds_resampled.to_netcdf(resampled_file)
@@ -485,8 +526,12 @@ class DataPreprocessor:
             # Fill NaN values
             if self.fill_method == 'interpolate':
                 # Use xarray's interpolate_na
-                ds_filled = ds.interpolate_na(dim='lon', method='linear')
-                ds_filled = ds_filled.interpolate_na(dim='lat', method='linear')
+                if 'longitude' in ds.coords:
+                    ds_filled = ds.interpolate_na(dim='longitude', method='linear')
+                    ds_filled = ds_filled.interpolate_na(dim='latitude', method='linear')
+                else:
+                    ds_filled = ds.interpolate_na(dim='lon', method='linear')
+                    ds_filled = ds_filled.interpolate_na(dim='lat', method='linear')
             elif self.fill_method == 'fill':
                 # Use forward fill then backward fill
                 ds_filled = ds.fillna(method='ffill').fillna(method='bfill')
@@ -519,7 +564,10 @@ class DataPreprocessor:
             var_name = list(ds.data_vars.keys())[0]
             
             # Create mask from grid geometries
-            mask = self._create_grid_mask(ds.lon.values, ds.lat.values)
+            if 'longitude' in ds.coords:
+                mask = self._create_grid_mask(ds.longitude.values, ds.latitude.values)
+            else:
+                mask = self._create_grid_mask(ds.lon.values, ds.lat.values)
             
             # Apply mask
             ds_masked = ds.copy()
@@ -593,10 +641,23 @@ class DataPreprocessor:
             # Get variable name
             var_name = list(ds.data_vars.keys())[0]
             
-            # Get data and coordinates
+            # Get data and coordinates (handle different coordinate names)
             data = ds[var_name].values
-            lons = ds.lon.values
-            lats = ds.lat.values
+            
+            # Try different coordinate name patterns
+            if 'longitude' in ds.coords:
+                lons = ds.longitude.values
+            elif 'lon' in ds.coords:
+                lons = ds.lon.values
+            else:
+                raise ValueError("No longitude coordinate found")
+                
+            if 'latitude' in ds.coords:
+                lats = ds.latitude.values
+            elif 'lat' in ds.coords:
+                lats = ds.lat.values
+            else:
+                raise ValueError("No latitude coordinate found")
             
             # Create transform
             transform = from_bounds(
@@ -642,6 +703,83 @@ class DataPreprocessor:
             shutil.copy2(input_file, output_file)
         
         return output_file
+    
+    def _convert_grib_to_netcdf(self, grib_file: Path) -> Optional[Path]:
+        """
+        Convert a GRIB file to NetCDF format for CDO compatibility.
+        
+        Args:
+            grib_file: Path to input GRIB file
+            
+        Returns:
+            Path to output NetCDF file or None if conversion failed
+        """
+        try:
+            # Create temporary NetCDF file
+            temp_dir = Path(tempfile.gettempdir()) / f"era5_land_{os.getpid()}"
+            temp_dir.mkdir(exist_ok=True)
+            netcdf_file = temp_dir / f"{grib_file.stem}.nc"
+            
+            # Open GRIB file
+            grbs = pygrib.open(str(grib_file))
+            grb = grbs[1]
+            
+            # Extract data and coordinates
+            data = grb.values
+            lats, lons = grb.latlons()
+            
+            # Get metadata
+            variable_name = grb.name.replace(' ', '_').lower()
+            units = grb.units
+            time = grb.validDate
+            
+            # Create xarray Dataset
+            ds = xr.Dataset(
+                data_vars={
+                    variable_name: xr.DataArray(
+                        data=data,
+                        dims=['latitude', 'longitude'],
+                        attrs={
+                            'units': units,
+                            'long_name': grb.name,
+                            'standard_name': variable_name
+                        }
+                    )
+                },
+                coords={
+                    'latitude': xr.DataArray(
+                        lats[:, 0],  # Take first column
+                        dims=['latitude'],
+                        attrs={'units': 'degrees_north', 'standard_name': 'latitude'}
+                    ),
+                    'longitude': xr.DataArray(
+                        lons[0, :],  # Take first row
+                        dims=['longitude'],
+                        attrs={'units': 'degrees_east', 'standard_name': 'longitude'}
+                    ),
+                    'time': xr.DataArray(
+                        [time],
+                        dims=['time'],
+                        attrs={'standard_name': 'time'}
+                    )
+                },
+                attrs={
+                    'title': f'ERA5_Land {grb.name}',
+                    'source': 'ERA5_Land reanalysis',
+                    'history': f'Converted from GRIB using pygrib and xarray'
+                }
+            )
+            
+            # Save to NetCDF
+            ds.to_netcdf(netcdf_file, format='NETCDF4')
+            grbs.close()
+            
+            self.logger.info(f"Converted GRIB to NetCDF: {netcdf_file}")
+            return netcdf_file
+            
+        except Exception as e:
+            self.logger.error(f"Failed to convert GRIB to NetCDF: {e}")
+            return None
     
     def _generate_output_path(self, input_file: Path, output_dir: Optional[Path] = None) -> Path:
         """

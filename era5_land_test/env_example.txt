@@ -1,0 +1,8 @@
+# CDS API Configuration
+# Copy this file to .env and fill in your actual credentials
+CDSAPI_URL=https://cds.climate.copernicus.eu/api
+CDSAPI_KEY=your-api-key-here
+
+# Optional: Additional configuration
+# CDSAPI_TIMEOUT=300
+# CDSAPI_VERIFY_SSL=true 

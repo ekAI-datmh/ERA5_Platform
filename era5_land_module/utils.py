@@ -22,7 +22,10 @@ from rasterio.warp import reproject, Resampling
 import xarray as xr
 import cdsapi
 
-from .config import *
+try:
+    from .config import *
+except ImportError:
+    from config import *
 
 
 def setup_logging(name: str, level: str = 'INFO') -> logging.Logger:
@@ -68,10 +71,18 @@ def load_cds_api_key() -> Optional[str]:
     if api_key:
         return api_key
     
-    # Try config file
+    # Try config file in current directory
     config_file = BASE_DIR / '.cdsapirc'
     if config_file.exists():
         with open(config_file, 'r') as f:
+            for line in f:
+                if line.startswith('key:'):
+                    return line.split(':', 1)[1].strip()
+    
+    # Try config file in home directory
+    home_config_file = Path.home() / '.cdsapirc'
+    if home_config_file.exists():
+        with open(home_config_file, 'r') as f:
             for line in f:
                 if line.startswith('key:'):
                     return line.split(':', 1)[1].strip()

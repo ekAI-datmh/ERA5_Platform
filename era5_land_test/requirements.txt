@@ -1,0 +1,7 @@
+cdsapi
+netCDF4
+numpy
+pandas
+python-dotenv 
+xarray 
+dask

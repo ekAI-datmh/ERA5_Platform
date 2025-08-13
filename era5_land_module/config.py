@@ -23,8 +23,8 @@ for dir_path in [GRIB_DIR, NETCDF_DIR, PROCESSED_DIR, OUTPUT_DIR]:
     dir_path.mkdir(parents=True, exist_ok=True)
 
 # ERA5_Land dataset configuration
-ERA5_LAND_DATASET = "reanalysis-era5-land"
-ERA5_LAND_HOURLY_DATASET = "reanalysis-era5-land"
+ERA5_LAND_DATASET = "reanalysis-era5-single-levels"  # Try standard ERA5 first
+ERA5_LAND_HOURLY_DATASET = "reanalysis-era5-single-levels"
 
 # Vietnam bounding box (approximate)
 VIETNAM_BBOX = {
@@ -73,7 +73,7 @@ ERA5_LAND_DAILY_VARIABLES = [
 
 # CDS API configuration
 CDS_API_CONFIG = {
-    'url': 'https://cds.climate.copernicus.eu/api/v2',
+    'url': 'https://cds.climate.copernicus.eu/api',  # Use the URL from .cdsapirc
     'key': None,  # Will be loaded from environment or config file
     'timeout': 3600,  # 1 hour timeout
     'retry_attempts': 3,

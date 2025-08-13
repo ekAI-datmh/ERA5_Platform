@@ -1,0 +1,627 @@
+<PAMDataset>
+  <PAMRasterBand band="1">
+    <Description>0[-] SFC (Ground or water surface)</Description>
+    <Histograms>
+      <HistItem>
+        <HistMin>281.6485236672794</HistMin>
+        <HistMax>301.6669060202206</HistMax>
+        <BucketCount>527</BucketCount>
+        <IncludeOutOfRange>0</IncludeOutOfRange>
+        <Approximate>0</Approximate>
+        <HistCounts>1|0|0|0|0|0|0|0|0|0|0|0|0|1|0|0|0|0|0|1|0|0|0|0|0|0|0|0|0|0|1|0|0|0|0|1|0|0|0|0|0|0|0|0|0|0|0|1|0|0|0|0|0|0|0|0|0|0|0|0|0|0|1|0|1|0|0|0|0|0|1|1|0|0|0|0|0|0|0|1|0|0|0|1|1|0|0|1|0|1|0|0|0|0|0|0|0|0|0|1|0|3|0|1|0|0|1|0|1|1|0|0|1|0|0|2|0|0|2|0|0|0|0|1|1|1|1|2|0|1|2|0|0|1|0|0|0|0|1|0|0|0|0|1|0|0|2|1|0|0|0|0|0|0|0|0|1|0|0|1|0|0|1|0|0|0|1|0|0|0|1|0|0|1|1|1|1|0|1|0|1|0|0|1|2|1|0|0|1|0|1|1|0|0|0|0|0|0|0|1|0|0|1|0|0|0|0|0|0|0|0|0|0|3|0|0|1|1|1|1|0|0|1|2|1|4|2|1|0|1|0|2|1|0|3|1|3|2|2|5|0|0|1|0|2|0|0|1|3|2|3|1|1|1|1|2|2|2|2|2|0|1|0|3|2|0|2|5|0|0|3|2|1|4|2|1|3|1|0|0|3|1|2|3|2|0|3|1|1|2|2|0|2|2|1|0|1|1|1|2|3|0|2|2|2|4|2|0|1|0|1|4|1|2|1|0|0|3|0|1|5|4|2|0|1|1|2|5|4|4|0|0|0|1|0|2|3|1|1|4|1|2|1|1|4|0|1|2|2|0|2|3|2|1|1|1|2|2|0|3|0|2|4|0|1|1|0|5|3|1|1|0|0|1|0|0|0|2|3|0|1|1|1|1|2|2|1|1|2|0|1|2|3|1|2|2|1|1|1|0|1|2|4|2|1|1|2|3|1|2|3|1|0|2|5|2|1|3|4|2|1|2|1|5|1|1|0|3|1|2|0|1|1|2|3|4|0|1|1|3|3|1|1|0|3|1|2|4|0|0|4|2|3|1|1|1|1|3|1|1|4|0|2|2|1|1|3|3|2|1|5|3|3|2|4|3|1|6|1|1|3|2|1|5|3|0|3|4|3|0|0|0|0|1|0|1|0|0|0|1|1|0|0|0|1|0|0|0|0|0|0|0|1|0|0|0|1|0|0|1|1|0|0|0|0|0|1</HistCounts>
+      </HistItem>
+    </Histograms>
+    <Metadata>
+      <MDI key="GRIB_COMMENT">2 metre temperature [C]</MDI>
+      <MDI key="GRIB_ELEMENT">2T</MDI>
+      <MDI key="GRIB_FORECAST_SECONDS">0</MDI>
+      <MDI key="GRIB_REF_TIME">1704067200</MDI>
+      <MDI key="GRIB_SHORT_NAME">0-SFC</MDI>
+      <MDI key="GRIB_UNIT">[C]</MDI>
+      <MDI key="GRIB_VALID_TIME">1704067200</MDI>
+      <MDI key="STATISTICS_MAXIMUM">301.64794921875</MDI>
+      <MDI key="STATISTICS_MEAN">294.43706731054</MDI>
+      <MDI key="STATISTICS_MINIMUM">281.66748046875</MDI>
+      <MDI key="STATISTICS_STDDEV">4.2445251823531</MDI>
+      <MDI key="STATISTICS_VALID_PERCENT">100</MDI>
+    </Metadata>
+  </PAMRasterBand>
+  <PAMRasterBand band="2">
+    <Description>0[-] SFC (Ground or water surface)</Description>
+    <Histograms>
+      <HistItem>
+        <HistMin>282.0126656635437</HistMin>
+        <HistMax>301.6377249614563</HistMax>
+        <BucketCount>527</BucketCount>
+        <IncludeOutOfRange>0</IncludeOutOfRange>
+        <Approximate>0</Approximate>
+        <HistCounts>1|0|1|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|1|0|1|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|1|0|0|0|0|0|0|0|0|0|0|1|0|2|0|0|0|0|1|0|1|0|0|0|0|0|0|0|1|0|0|0|1|0|1|0|0|2|1|3|1|1|0|0|0|0|0|0|1|0|0|0|0|0|1|1|0|2|0|0|1|1|1|0|0|0|0|1|1|1|1|0|0|1|0|0|3|0|1|0|2|1|0|0|1|1|0|0|0|1|0|0|0|0|0|0|0|0|0|0|0|0|1|0|0|0|0|0|0|1|0|0|1|1|0|2|0|0|2|1|1|1|2|0|0|0|0|0|0|0|0|0|1|0|1|0|0|1|0|0|0|0|1|0|0|0|0|0|0|0|1|0|0|0|0|1|2|1|1|0|1|1|1|0|1|2|0|0|2|1|0|0|2|2|1|0|0|1|1|2|1|3|3|0|0|3|2|0|2|2|2|1|2|1|2|0|1|1|0|1|3|1|1|2|0|0|1|0|4|2|1|2|1|0|2|0|2|0|2|2|1|1|3|4|1|0|2|1|4|2|1|1|2|2|0|0|3|1|4|1|0|1|1|1|1|2|0|5|2|0|1|2|3|2|3|2|2|3|2|0|0|4|3|2|0|0|2|2|2|1|3|1|2|2|2|0|2|2|3|3|0|2|1|1|2|1|0|1|2|1|3|0|3|2|3|2|1|3|0|0|3|0|3|1|2|2|2|2|0|0|3|3|0|2|0|1|2|0|2|2|3|2|1|1|0|1|1|0|0|1|2|0|2|2|0|2|1|2|1|2|0|1|1|1|3|1|1|1|4|1|1|1|3|2|3|2|1|1|1|1|1|1|1|3|5|4|4|0|5|1|2|1|4|2|2|3|1|1|0|1|0|3|0|1|3|1|4|1|4|2|1|2|2|1|0|3|0|3|1|0|2|2|2|2|1|1|1|0|2|0|2|2|0|1|3|2|3|2|2|2|1|0|2|6|2|2|1|3|2|0|6|4|1|2|3|2|4|3|2|2|0|2|0|3|1|1|1|1|0|0|0|1|0|1|0|0|0|0|1|1|0|0|0|0|0|0|1|1|0|0|0|0|0|2|1|0|0|1|0|0|0|1</HistCounts>
+      </HistItem>
+    </Histograms>
+    <Metadata>
+      <MDI key="GRIB_COMMENT">2 metre temperature [C]</MDI>
+      <MDI key="GRIB_ELEMENT">2T</MDI>
+      <MDI key="GRIB_FORECAST_SECONDS">0</MDI>
+      <MDI key="GRIB_REF_TIME">1704067200</MDI>
+      <MDI key="GRIB_SHORT_NAME">0-SFC</MDI>
+      <MDI key="GRIB_UNIT">[C]</MDI>
+      <MDI key="GRIB_VALID_TIME">1704067200</MDI>
+      <MDI key="STATISTICS_MAXIMUM">301.619140625</MDI>
+      <MDI key="STATISTICS_MEAN">294.37231306333</MDI>
+      <MDI key="STATISTICS_MINIMUM">282.03125</MDI>
+      <MDI key="STATISTICS_STDDEV">4.2599634607557</MDI>
+      <MDI key="STATISTICS_VALID_PERCENT">100</MDI>
+    </Metadata>
+  </PAMRasterBand>
+  <PAMRasterBand band="3">
+    <Description>0[-] SFC (Ground or water surface)</Description>
+    <Histograms>
+      <HistItem>
+        <HistMin>280.9615499362548</HistMin>
+        <HistMax>301.4554422512452</HistMax>
+        <BucketCount>527</BucketCount>
+        <IncludeOutOfRange>0</IncludeOutOfRange>
+        <Approximate>0</Approximate>
+        <HistCounts>1|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|2|0|0|0|1|0|0|0|1|0|0|0|0|0|0|0|0|0|0|0|0|0|1|0|0|0|0|0|0|0|0|0|0|1|0|0|0|0|0|0|0|0|0|1|0|0|0|0|0|0|0|0|1|0|0|0|1|0|0|0|0|1|0|1|1|0|0|0|0|0|0|1|0|0|0|0|0|0|0|0|0|0|0|0|1|0|0|2|1|1|1|2|0|1|1|1|0|0|1|0|1|0|1|0|1|0|1|0|0|0|0|0|1|0|0|0|1|0|1|0|0|1|0|0|1|0|0|0|1|1|0|0|1|0|0|0|0|0|1|1|0|0|0|0|0|1|0|0|2|0|1|0|0|0|1|0|0|0|0|0|0|1|0|0|0|1|2|1|1|1|0|1|1|0|1|0|1|2|0|0|0|0|0|1|2|0|0|0|0|0|0|0|2|1|1|1|0|0|0|2|1|2|0|0|0|0|2|2|3|1|0|0|1|0|1|0|1|2|1|2|2|1|1|2|1|1|2|0|0|1|0|1|2|0|1|1|2|1|1|0|2|1|2|4|1|1|1|3|1|1|1|1|1|0|5|3|2|2|0|2|2|1|2|2|4|2|0|0|1|2|3|2|3|0|2|1|3|1|2|0|0|2|3|1|0|1|2|0|1|0|1|3|4|3|0|0|1|3|2|2|1|3|3|1|1|1|2|4|2|2|4|3|2|2|0|4|1|1|0|0|5|2|2|3|3|0|2|0|2|2|1|1|2|1|3|2|1|1|0|1|1|2|0|0|1|4|1|1|1|4|2|1|2|2|1|1|1|2|1|0|1|0|0|2|1|1|1|1|0|1|3|0|3|2|1|0|4|3|0|0|3|1|2|0|0|1|6|2|1|0|1|2|0|3|1|0|2|2|2|5|4|5|1|3|0|2|1|0|1|2|1|2|2|1|1|1|2|1|3|2|1|1|1|1|2|0|1|0|1|0|0|2|0|1|2|5|1|2|1|1|3|1|2|5|6|2|1|6|1|2|1|2|5|3|2|1|5|1|3|4|7|3|5|2|3|1|3|3|1|2|4|2|0|2|3|0|1|1|0|0|0|0|0|0|0|0|1|0|1|0|0|0|0|1|1|0|0|1|0|0|0|1|0|2|0|0|1|0|1</HistCounts>
+      </HistItem>
+    </Histograms>
+    <Metadata>
+      <MDI key="GRIB_COMMENT">2 metre temperature [C]</MDI>
+      <MDI key="GRIB_ELEMENT">2T</MDI>
+      <MDI key="GRIB_FORECAST_SECONDS">0</MDI>
+      <MDI key="GRIB_REF_TIME">1704067200</MDI>
+      <MDI key="GRIB_SHORT_NAME">0-SFC</MDI>
+      <MDI key="GRIB_UNIT">[C]</MDI>
+      <MDI key="GRIB_VALID_TIME">1704067200</MDI>
+      <MDI key="STATISTICS_MAXIMUM">301.43603515625</MDI>
+      <MDI key="STATISTICS_MEAN">294.32375826465</MDI>
+      <MDI key="STATISTICS_MINIMUM">280.98095703125</MDI>
+      <MDI key="STATISTICS_STDDEV">4.3650012800931</MDI>
+      <MDI key="STATISTICS_VALID_PERCENT">100</MDI>
+    </Metadata>
+  </PAMRasterBand>
+  <PAMRasterBand band="4">
+    <Description>0[-] SFC (Ground or water surface)</Description>
+    <Metadata>
+      <MDI key="GRIB_COMMENT">2 metre temperature [C]</MDI>
+      <MDI key="GRIB_ELEMENT">2T</MDI>
+      <MDI key="GRIB_FORECAST_SECONDS">0</MDI>
+      <MDI key="GRIB_REF_TIME">1704067200</MDI>
+      <MDI key="GRIB_SHORT_NAME">0-SFC</MDI>
+      <MDI key="GRIB_UNIT">[C]</MDI>
+      <MDI key="GRIB_VALID_TIME">1704067200</MDI>
+      <MDI key="STATISTICS_MAXIMUM">301.55224609375</MDI>
+      <MDI key="STATISTICS_MEAN">294.20722118863</MDI>
+      <MDI key="STATISTICS_MINIMUM">281.89599609375</MDI>
+      <MDI key="STATISTICS_STDDEV">4.2734801468006</MDI>
+      <MDI key="STATISTICS_VALID_PERCENT">100</MDI>
+    </Metadata>
+  </PAMRasterBand>
+  <PAMRasterBand band="5">
+    <Description>0[-] SFC (Ground or water surface)</Description>
+    <Metadata>
+      <MDI key="GRIB_COMMENT">2 metre temperature [C]</MDI>
+      <MDI key="GRIB_ELEMENT">2T</MDI>
+      <MDI key="GRIB_FORECAST_SECONDS">0</MDI>
+      <MDI key="GRIB_REF_TIME">1704067200</MDI>
+      <MDI key="GRIB_SHORT_NAME">0-SFC</MDI>
+      <MDI key="GRIB_UNIT">[C]</MDI>
+      <MDI key="GRIB_VALID_TIME">1704067200</MDI>
+      <MDI key="STATISTICS_MAXIMUM">301.8876953125</MDI>
+      <MDI key="STATISTICS_MEAN">294.54285200723</MDI>
+      <MDI key="STATISTICS_MINIMUM">281.4716796875</MDI>
+      <MDI key="STATISTICS_STDDEV">4.1864361790594</MDI>
+      <MDI key="STATISTICS_VALID_PERCENT">100</MDI>
+    </Metadata>
+  </PAMRasterBand>
+  <PAMRasterBand band="6">
+    <Description>0[-] SFC (Ground or water surface)</Description>
+    <Metadata>
+      <MDI key="GRIB_COMMENT">2 metre temperature [C]</MDI>
+      <MDI key="GRIB_ELEMENT">2T</MDI>
+      <MDI key="GRIB_FORECAST_SECONDS">0</MDI>
+      <MDI key="GRIB_REF_TIME">1704067200</MDI>
+      <MDI key="GRIB_SHORT_NAME">0-SFC</MDI>
+      <MDI key="GRIB_UNIT">[C]</MDI>
+      <MDI key="GRIB_VALID_TIME">1704067200</MDI>
+      <MDI key="STATISTICS_MAXIMUM">301.6357421875</MDI>
+      <MDI key="STATISTICS_MEAN">294.31513319794</MDI>
+      <MDI key="STATISTICS_MINIMUM">281.7705078125</MDI>
+      <MDI key="STATISTICS_STDDEV">4.2292868048789</MDI>
+      <MDI key="STATISTICS_VALID_PERCENT">100</MDI>
+    </Metadata>
+  </PAMRasterBand>
+  <PAMRasterBand band="7">
+    <Description>0[-] SFC (Ground or water surface)</Description>
+    <Metadata>
+      <MDI key="GRIB_COMMENT">2 metre temperature [C]</MDI>
+      <MDI key="GRIB_ELEMENT">2T</MDI>
+      <MDI key="GRIB_FORECAST_SECONDS">0</MDI>
+      <MDI key="GRIB_REF_TIME">1704067200</MDI>
+      <MDI key="GRIB_SHORT_NAME">0-SFC</MDI>
+      <MDI key="GRIB_UNIT">[C]</MDI>
+      <MDI key="GRIB_VALID_TIME">1704067200</MDI>
+      <MDI key="STATISTICS_MAXIMUM">301.6171875</MDI>
+      <MDI key="STATISTICS_MEAN">294.61955571039</MDI>
+      <MDI key="STATISTICS_MINIMUM">281.912109375</MDI>
+      <MDI key="STATISTICS_STDDEV">4.2600508789177</MDI>
+      <MDI key="STATISTICS_VALID_PERCENT">100</MDI>
+    </Metadata>
+  </PAMRasterBand>
+  <PAMRasterBand band="8">
+    <Description>0[-] SFC (Ground or water surface)</Description>
+    <Metadata>
+      <MDI key="GRIB_COMMENT">2 metre temperature [C]</MDI>
+      <MDI key="GRIB_ELEMENT">2T</MDI>
+      <MDI key="GRIB_FORECAST_SECONDS">0</MDI>
+      <MDI key="GRIB_REF_TIME">1704067200</MDI>
+      <MDI key="GRIB_SHORT_NAME">0-SFC</MDI>
+      <MDI key="GRIB_UNIT">[C]</MDI>
+      <MDI key="GRIB_VALID_TIME">1704067200</MDI>
+      <MDI key="STATISTICS_MAXIMUM">301.81713867188</MDI>
+      <MDI key="STATISTICS_MEAN">294.33030651462</MDI>
+      <MDI key="STATISTICS_MINIMUM">281.30932617188</MDI>
+      <MDI key="STATISTICS_STDDEV">4.1367141435105</MDI>
+      <MDI key="STATISTICS_VALID_PERCENT">100</MDI>
+    </Metadata>
+  </PAMRasterBand>
+  <PAMRasterBand band="9">
+    <Description>0[-] SFC (Ground or water surface)</Description>
+    <Metadata>
+      <MDI key="GRIB_COMMENT">2 metre temperature [C]</MDI>
+      <MDI key="GRIB_ELEMENT">2T</MDI>
+      <MDI key="GRIB_FORECAST_SECONDS">0</MDI>
+      <MDI key="GRIB_REF_TIME">1704067200</MDI>
+      <MDI key="GRIB_SHORT_NAME">0-SFC</MDI>
+      <MDI key="GRIB_UNIT">[C]</MDI>
+      <MDI key="GRIB_VALID_TIME">1704067200</MDI>
+      <MDI key="STATISTICS_MAXIMUM">301.76513671875</MDI>
+      <MDI key="STATISTICS_MEAN">294.54691669384</MDI>
+      <MDI key="STATISTICS_MINIMUM">281.32568359375</MDI>
+      <MDI key="STATISTICS_STDDEV">4.1624728746688</MDI>
+      <MDI key="STATISTICS_VALID_PERCENT">100</MDI>
+    </Metadata>
+  </PAMRasterBand>
+  <PAMRasterBand band="10">
+    <Description>0[-] SFC (Ground or water surface)</Description>
+    <Metadata>
+      <MDI key="GRIB_COMMENT">2 metre temperature [C]</MDI>
+      <MDI key="GRIB_ELEMENT">2T</MDI>
+      <MDI key="GRIB_FORECAST_SECONDS">0</MDI>
+      <MDI key="GRIB_REF_TIME">1704067200</MDI>
+      <MDI key="GRIB_SHORT_NAME">0-SFC</MDI>
+      <MDI key="GRIB_UNIT">[C]</MDI>
+      <MDI key="GRIB_VALID_TIME">1704067200</MDI>
+      <MDI key="STATISTICS_MAXIMUM">301.29760742188</MDI>
+      <MDI key="STATISTICS_MEAN">294.51212503335</MDI>
+      <MDI key="STATISTICS_MINIMUM">281.73901367188</MDI>
+      <MDI key="STATISTICS_STDDEV">4.3957818077741</MDI>
+      <MDI key="STATISTICS_VALID_PERCENT">100</MDI>
+    </Metadata>
+  </PAMRasterBand>
+  <PAMRasterBand band="11">
+    <Description>0[-] SFC (Ground or water surface)</Description>
+    <Metadata>
+      <MDI key="GRIB_COMMENT">2 metre temperature [C]</MDI>
+      <MDI key="GRIB_ELEMENT">2T</MDI>
+      <MDI key="GRIB_FORECAST_SECONDS">0</MDI>
+      <MDI key="GRIB_REF_TIME">1704067200</MDI>
+      <MDI key="GRIB_SHORT_NAME">0-SFC</MDI>
+      <MDI key="GRIB_UNIT">[C]</MDI>
+      <MDI key="GRIB_VALID_TIME">1704067200</MDI>
+      <MDI key="STATISTICS_MAXIMUM">301.86767578125</MDI>
+      <MDI key="STATISTICS_MEAN">294.59890057964</MDI>
+      <MDI key="STATISTICS_MINIMUM">281.59619140625</MDI>
+      <MDI key="STATISTICS_STDDEV">4.3143628115355</MDI>
+      <MDI key="STATISTICS_VALID_PERCENT">100</MDI>
+    </Metadata>
+  </PAMRasterBand>
+  <PAMRasterBand band="12">
+    <Description>0[-] SFC (Ground or water surface)</Description>
+    <Metadata>
+      <MDI key="GRIB_COMMENT">2 metre temperature [C]</MDI>
+      <MDI key="GRIB_ELEMENT">2T</MDI>
+      <MDI key="GRIB_FORECAST_SECONDS">0</MDI>
+      <MDI key="GRIB_REF_TIME">1704067200</MDI>
+      <MDI key="GRIB_SHORT_NAME">0-SFC</MDI>
+      <MDI key="GRIB_UNIT">[C]</MDI>
+      <MDI key="GRIB_VALID_TIME">1704067200</MDI>
+      <MDI key="STATISTICS_MAXIMUM">301.86108398438</MDI>
+      <MDI key="STATISTICS_MEAN">295.5905706127</MDI>
+      <MDI key="STATISTICS_MINIMUM">284.37084960938</MDI>
+      <MDI key="STATISTICS_STDDEV">4.5129083279382</MDI>
+      <MDI key="STATISTICS_VALID_PERCENT">100</MDI>
+    </Metadata>
+  </PAMRasterBand>
+  <PAMRasterBand band="13">
+    <Description>0[-] SFC (Ground or water surface)</Description>
+    <Metadata>
+      <MDI key="GRIB_COMMENT">2 metre temperature [C]</MDI>
+      <MDI key="GRIB_ELEMENT">2T</MDI>
+      <MDI key="GRIB_FORECAST_SECONDS">0</MDI>
+      <MDI key="GRIB_REF_TIME">1704067200</MDI>
+      <MDI key="GRIB_SHORT_NAME">0-SFC</MDI>
+      <MDI key="GRIB_UNIT">[C]</MDI>
+      <MDI key="GRIB_VALID_TIME">1704067200</MDI>
+      <MDI key="STATISTICS_MAXIMUM">301.80517578125</MDI>
+      <MDI key="STATISTICS_MEAN">295.52902540174</MDI>
+      <MDI key="STATISTICS_MINIMUM">284.42431640625</MDI>
+      <MDI key="STATISTICS_STDDEV">4.5168075567527</MDI>
+      <MDI key="STATISTICS_VALID_PERCENT">100</MDI>
+    </Metadata>
+  </PAMRasterBand>
+  <PAMRasterBand band="14">
+    <Description>0[-] SFC (Ground or water surface)</Description>
+    <Metadata>
+      <MDI key="GRIB_COMMENT">2 metre temperature [C]</MDI>
+      <MDI key="GRIB_ELEMENT">2T</MDI>
+      <MDI key="GRIB_FORECAST_SECONDS">0</MDI>
+      <MDI key="GRIB_REF_TIME">1704067200</MDI>
+      <MDI key="GRIB_SHORT_NAME">0-SFC</MDI>
+      <MDI key="GRIB_UNIT">[C]</MDI>
+      <MDI key="GRIB_VALID_TIME">1704067200</MDI>
+      <MDI key="STATISTICS_MAXIMUM">301.91381835938</MDI>
+      <MDI key="STATISTICS_MEAN">295.60540991535</MDI>
+      <MDI key="STATISTICS_MINIMUM">284.27709960938</MDI>
+      <MDI key="STATISTICS_STDDEV">4.5235677909937</MDI>
+      <MDI key="STATISTICS_VALID_PERCENT">100</MDI>
+    </Metadata>
+  </PAMRasterBand>
+  <PAMRasterBand band="15">
+    <Description>0[-] SFC (Ground or water surface)</Description>
+    <Metadata>
+      <MDI key="GRIB_COMMENT">2 metre temperature [C]</MDI>
+      <MDI key="GRIB_ELEMENT">2T</MDI>
+      <MDI key="GRIB_FORECAST_SECONDS">0</MDI>
+      <MDI key="GRIB_REF_TIME">1704067200</MDI>
+      <MDI key="GRIB_SHORT_NAME">0-SFC</MDI>
+      <MDI key="GRIB_UNIT">[C]</MDI>
+      <MDI key="GRIB_VALID_TIME">1704067200</MDI>
+      <MDI key="STATISTICS_MAXIMUM">301.88818359375</MDI>
+      <MDI key="STATISTICS_MEAN">295.54619400053</MDI>
+      <MDI key="STATISTICS_MINIMUM">284.36669921875</MDI>
+      <MDI key="STATISTICS_STDDEV">4.5061619749371</MDI>
+      <MDI key="STATISTICS_VALID_PERCENT">100</MDI>
+    </Metadata>
+  </PAMRasterBand>
+  <PAMRasterBand band="16">
+    <Description>0[-] SFC (Ground or water surface)</Description>
+    <Metadata>
+      <MDI key="GRIB_COMMENT">2 metre temperature [C]</MDI>
+      <MDI key="GRIB_ELEMENT">2T</MDI>
+      <MDI key="GRIB_FORECAST_SECONDS">0</MDI>
+      <MDI key="GRIB_REF_TIME">1704067200</MDI>
+      <MDI key="GRIB_SHORT_NAME">0-SFC</MDI>
+      <MDI key="GRIB_UNIT">[C]</MDI>
+      <MDI key="GRIB_VALID_TIME">1704067200</MDI>
+      <MDI key="STATISTICS_MAXIMUM">301.8974609375</MDI>
+      <MDI key="STATISTICS_MEAN">295.59660927123</MDI>
+      <MDI key="STATISTICS_MINIMUM">284.3154296875</MDI>
+      <MDI key="STATISTICS_STDDEV">4.5101170581092</MDI>
+      <MDI key="STATISTICS_VALID_PERCENT">100</MDI>
+    </Metadata>
+  </PAMRasterBand>
+  <PAMRasterBand band="17">
+    <Description>0[-] SFC (Ground or water surface)</Description>
+    <Metadata>
+      <MDI key="GRIB_COMMENT">2 metre temperature [C]</MDI>
+      <MDI key="GRIB_ELEMENT">2T</MDI>
+      <MDI key="GRIB_FORECAST_SECONDS">0</MDI>
+      <MDI key="GRIB_REF_TIME">1704067200</MDI>
+      <MDI key="GRIB_SHORT_NAME">0-SFC</MDI>
+      <MDI key="GRIB_UNIT">[C]</MDI>
+      <MDI key="GRIB_VALID_TIME">1704067200</MDI>
+      <MDI key="STATISTICS_MAXIMUM">302.00610351562</MDI>
+      <MDI key="STATISTICS_MEAN">295.59987945846</MDI>
+      <MDI key="STATISTICS_MINIMUM">284.26782226562</MDI>
+      <MDI key="STATISTICS_STDDEV">4.5624989805847</MDI>
+      <MDI key="STATISTICS_VALID_PERCENT">100</MDI>
+    </Metadata>
+  </PAMRasterBand>
+  <PAMRasterBand band="18">
+    <Description>0[-] SFC (Ground or water surface)</Description>
+    <Metadata>
+      <MDI key="GRIB_COMMENT">2 metre temperature [C]</MDI>
+      <MDI key="GRIB_ELEMENT">2T</MDI>
+      <MDI key="GRIB_FORECAST_SECONDS">0</MDI>
+      <MDI key="GRIB_REF_TIME">1704067200</MDI>
+      <MDI key="GRIB_SHORT_NAME">0-SFC</MDI>
+      <MDI key="GRIB_UNIT">[C]</MDI>
+      <MDI key="GRIB_VALID_TIME">1704067200</MDI>
+      <MDI key="STATISTICS_MAXIMUM">301.80737304688</MDI>
+      <MDI key="STATISTICS_MEAN">295.50571715266</MDI>
+      <MDI key="STATISTICS_MINIMUM">284.35034179688</MDI>
+      <MDI key="STATISTICS_STDDEV">4.5123256161946</MDI>
+      <MDI key="STATISTICS_VALID_PERCENT">100</MDI>
+    </Metadata>
+  </PAMRasterBand>
+  <PAMRasterBand band="19">
+    <Description>0[-] SFC (Ground or water surface)</Description>
+    <Metadata>
+      <MDI key="GRIB_COMMENT">2 metre temperature [C]</MDI>
+      <MDI key="GRIB_ELEMENT">2T</MDI>
+      <MDI key="GRIB_FORECAST_SECONDS">0</MDI>
+      <MDI key="GRIB_REF_TIME">1704067200</MDI>
+      <MDI key="GRIB_SHORT_NAME">0-SFC</MDI>
+      <MDI key="GRIB_UNIT">[C]</MDI>
+      <MDI key="GRIB_VALID_TIME">1704067200</MDI>
+      <MDI key="STATISTICS_MAXIMUM">302.033203125</MDI>
+      <MDI key="STATISTICS_MEAN">295.58363229364</MDI>
+      <MDI key="STATISTICS_MINIMUM">284.41015625</MDI>
+      <MDI key="STATISTICS_STDDEV">4.5340217912268</MDI>
+      <MDI key="STATISTICS_VALID_PERCENT">100</MDI>
+    </Metadata>
+  </PAMRasterBand>
+  <PAMRasterBand band="20">
+    <Description>0[-] SFC (Ground or water surface)</Description>
+    <Metadata>
+      <MDI key="GRIB_COMMENT">2 metre temperature [C]</MDI>
+      <MDI key="GRIB_ELEMENT">2T</MDI>
+      <MDI key="GRIB_FORECAST_SECONDS">0</MDI>
+      <MDI key="GRIB_REF_TIME">1704067200</MDI>
+      <MDI key="GRIB_SHORT_NAME">0-SFC</MDI>
+      <MDI key="GRIB_UNIT">[C]</MDI>
+      <MDI key="GRIB_VALID_TIME">1704067200</MDI>
+      <MDI key="STATISTICS_MAXIMUM">301.62158203125</MDI>
+      <MDI key="STATISTICS_MEAN">295.63957524164</MDI>
+      <MDI key="STATISTICS_MINIMUM">284.37158203125</MDI>
+      <MDI key="STATISTICS_STDDEV">4.5288945515401</MDI>
+      <MDI key="STATISTICS_VALID_PERCENT">100</MDI>
+    </Metadata>
+  </PAMRasterBand>
+  <PAMRasterBand band="21">
+    <Description>0[-] SFC (Ground or water surface)</Description>
+    <Metadata>
+      <MDI key="GRIB_COMMENT">2 metre temperature [C]</MDI>
+      <MDI key="GRIB_ELEMENT">2T</MDI>
+      <MDI key="GRIB_FORECAST_SECONDS">0</MDI>
+      <MDI key="GRIB_REF_TIME">1704067200</MDI>
+      <MDI key="GRIB_SHORT_NAME">0-SFC</MDI>
+      <MDI key="GRIB_UNIT">[C]</MDI>
+      <MDI key="GRIB_VALID_TIME">1704067200</MDI>
+      <MDI key="STATISTICS_MAXIMUM">301.85815429688</MDI>
+      <MDI key="STATISTICS_MEAN">295.54141820224</MDI>
+      <MDI key="STATISTICS_MINIMUM">284.40893554688</MDI>
+      <MDI key="STATISTICS_STDDEV">4.5243427155121</MDI>
+      <MDI key="STATISTICS_VALID_PERCENT">100</MDI>
+    </Metadata>
+  </PAMRasterBand>
+  <PAMRasterBand band="22">
+    <Description>0[-] SFC (Ground or water surface)</Description>
+    <Metadata>
+      <MDI key="GRIB_COMMENT">2 metre temperature [C]</MDI>
+      <MDI key="GRIB_ELEMENT">2T</MDI>
+      <MDI key="GRIB_FORECAST_SECONDS">0</MDI>
+      <MDI key="GRIB_REF_TIME">1704067200</MDI>
+      <MDI key="GRIB_SHORT_NAME">0-SFC</MDI>
+      <MDI key="GRIB_UNIT">[C]</MDI>
+      <MDI key="GRIB_VALID_TIME">1704067200</MDI>
+      <MDI key="STATISTICS_MAXIMUM">301.0400390625</MDI>
+      <MDI key="STATISTICS_MEAN">293.20983492944</MDI>
+      <MDI key="STATISTICS_MINIMUM">282.1767578125</MDI>
+      <MDI key="STATISTICS_STDDEV">4.6271461417549</MDI>
+      <MDI key="STATISTICS_VALID_PERCENT">100</MDI>
+    </Metadata>
+  </PAMRasterBand>
+  <PAMRasterBand band="23">
+    <Description>0[-] SFC (Ground or water surface)</Description>
+    <Metadata>
+      <MDI key="GRIB_COMMENT">2 metre temperature [C]</MDI>
+      <MDI key="GRIB_ELEMENT">2T</MDI>
+      <MDI key="GRIB_FORECAST_SECONDS">0</MDI>
+      <MDI key="GRIB_REF_TIME">1704067200</MDI>
+      <MDI key="GRIB_SHORT_NAME">0-SFC</MDI>
+      <MDI key="GRIB_UNIT">[C]</MDI>
+      <MDI key="GRIB_VALID_TIME">1704067200</MDI>
+      <MDI key="STATISTICS_MAXIMUM">300.92358398438</MDI>
+      <MDI key="STATISTICS_MEAN">293.16786914804</MDI>
+      <MDI key="STATISTICS_MINIMUM">282.15600585938</MDI>
+      <MDI key="STATISTICS_STDDEV">4.5857740569898</MDI>
+      <MDI key="STATISTICS_VALID_PERCENT">100</MDI>
+    </Metadata>
+  </PAMRasterBand>
+  <PAMRasterBand band="24">
+    <Description>0[-] SFC (Ground or water surface)</Description>
+    <Metadata>
+      <MDI key="GRIB_COMMENT">2 metre temperature [C]</MDI>
+      <MDI key="GRIB_ELEMENT">2T</MDI>
+      <MDI key="GRIB_FORECAST_SECONDS">0</MDI>
+      <MDI key="GRIB_REF_TIME">1704067200</MDI>
+      <MDI key="GRIB_SHORT_NAME">0-SFC</MDI>
+      <MDI key="GRIB_UNIT">[C]</MDI>
+      <MDI key="GRIB_VALID_TIME">1704067200</MDI>
+      <MDI key="STATISTICS_MAXIMUM">300.88989257812</MDI>
+      <MDI key="STATISTICS_MEAN">293.22529269079</MDI>
+      <MDI key="STATISTICS_MINIMUM">282.07934570312</MDI>
+      <MDI key="STATISTICS_STDDEV">4.6138761968887</MDI>
+      <MDI key="STATISTICS_VALID_PERCENT">100</MDI>
+    </Metadata>
+  </PAMRasterBand>
+  <PAMRasterBand band="25">
+    <Description>0[-] SFC (Ground or water surface)</Description>
+    <Metadata>
+      <MDI key="GRIB_COMMENT">2 metre temperature [C]</MDI>
+      <MDI key="GRIB_ELEMENT">2T</MDI>
+      <MDI key="GRIB_FORECAST_SECONDS">0</MDI>
+      <MDI key="GRIB_REF_TIME">1704067200</MDI>
+      <MDI key="GRIB_SHORT_NAME">0-SFC</MDI>
+      <MDI key="GRIB_UNIT">[C]</MDI>
+      <MDI key="GRIB_VALID_TIME">1704067200</MDI>
+      <MDI key="STATISTICS_MAXIMUM">301.0166015625</MDI>
+      <MDI key="STATISTICS_MEAN">293.14465169889</MDI>
+      <MDI key="STATISTICS_MINIMUM">282.1181640625</MDI>
+      <MDI key="STATISTICS_STDDEV">4.6114610699154</MDI>
+      <MDI key="STATISTICS_VALID_PERCENT">100</MDI>
+    </Metadata>
+  </PAMRasterBand>
+  <PAMRasterBand band="26">
+    <Description>0[-] SFC (Ground or water surface)</Description>
+    <Metadata>
+      <MDI key="GRIB_COMMENT">2 metre temperature [C]</MDI>
+      <MDI key="GRIB_ELEMENT">2T</MDI>
+      <MDI key="GRIB_FORECAST_SECONDS">0</MDI>
+      <MDI key="GRIB_REF_TIME">1704067200</MDI>
+      <MDI key="GRIB_SHORT_NAME">0-SFC</MDI>
+      <MDI key="GRIB_UNIT">[C]</MDI>
+      <MDI key="GRIB_VALID_TIME">1704067200</MDI>
+      <MDI key="STATISTICS_MAXIMUM">300.828125</MDI>
+      <MDI key="STATISTICS_MEAN">293.21307593098</MDI>
+      <MDI key="STATISTICS_MINIMUM">282.111328125</MDI>
+      <MDI key="STATISTICS_STDDEV">4.6282663022028</MDI>
+      <MDI key="STATISTICS_VALID_PERCENT">100</MDI>
+    </Metadata>
+  </PAMRasterBand>
+  <PAMRasterBand band="27">
+    <Description>0[-] SFC (Ground or water surface)</Description>
+    <Metadata>
+      <MDI key="GRIB_COMMENT">2 metre temperature [C]</MDI>
+      <MDI key="GRIB_ELEMENT">2T</MDI>
+      <MDI key="GRIB_FORECAST_SECONDS">0</MDI>
+      <MDI key="GRIB_REF_TIME">1704067200</MDI>
+      <MDI key="GRIB_SHORT_NAME">0-SFC</MDI>
+      <MDI key="GRIB_UNIT">[C]</MDI>
+      <MDI key="GRIB_VALID_TIME">1704067200</MDI>
+      <MDI key="STATISTICS_MAXIMUM">301.08984375</MDI>
+      <MDI key="STATISTICS_MEAN">293.23695075308</MDI>
+      <MDI key="STATISTICS_MINIMUM">282.087890625</MDI>
+      <MDI key="STATISTICS_STDDEV">4.6781284755411</MDI>
+      <MDI key="STATISTICS_VALID_PERCENT">100</MDI>
+    </Metadata>
+  </PAMRasterBand>
+  <PAMRasterBand band="28">
+    <Description>0[-] SFC (Ground or water surface)</Description>
+    <Metadata>
+      <MDI key="GRIB_COMMENT">2 metre temperature [C]</MDI>
+      <MDI key="GRIB_ELEMENT">2T</MDI>
+      <MDI key="GRIB_FORECAST_SECONDS">0</MDI>
+      <MDI key="GRIB_REF_TIME">1704067200</MDI>
+      <MDI key="GRIB_SHORT_NAME">0-SFC</MDI>
+      <MDI key="GRIB_UNIT">[C]</MDI>
+      <MDI key="GRIB_VALID_TIME">1704067200</MDI>
+      <MDI key="STATISTICS_MAXIMUM">300.98779296875</MDI>
+      <MDI key="STATISTICS_MEAN">293.13228715755</MDI>
+      <MDI key="STATISTICS_MINIMUM">282.17724609375</MDI>
+      <MDI key="STATISTICS_STDDEV">4.6018589421124</MDI>
+      <MDI key="STATISTICS_VALID_PERCENT">100</MDI>
+    </Metadata>
+  </PAMRasterBand>
+  <PAMRasterBand band="29">
+    <Description>0[-] SFC (Ground or water surface)</Description>
+    <Metadata>
+      <MDI key="GRIB_COMMENT">2 metre temperature [C]</MDI>
+      <MDI key="GRIB_ELEMENT">2T</MDI>
+      <MDI key="GRIB_FORECAST_SECONDS">0</MDI>
+      <MDI key="GRIB_REF_TIME">1704067200</MDI>
+      <MDI key="GRIB_SHORT_NAME">0-SFC</MDI>
+      <MDI key="GRIB_UNIT">[C]</MDI>
+      <MDI key="GRIB_VALID_TIME">1704067200</MDI>
+      <MDI key="STATISTICS_MAXIMUM">300.96728515625</MDI>
+      <MDI key="STATISTICS_MEAN">293.20478070891</MDI>
+      <MDI key="STATISTICS_MINIMUM">282.05712890625</MDI>
+      <MDI key="STATISTICS_STDDEV">4.6296343034931</MDI>
+      <MDI key="STATISTICS_VALID_PERCENT">100</MDI>
+    </Metadata>
+  </PAMRasterBand>
+  <PAMRasterBand band="30">
+    <Description>0[-] SFC (Ground or water surface)</Description>
+    <Metadata>
+      <MDI key="GRIB_COMMENT">2 metre temperature [C]</MDI>
+      <MDI key="GRIB_ELEMENT">2T</MDI>
+      <MDI key="GRIB_FORECAST_SECONDS">0</MDI>
+      <MDI key="GRIB_REF_TIME">1704067200</MDI>
+      <MDI key="GRIB_SHORT_NAME">0-SFC</MDI>
+      <MDI key="GRIB_UNIT">[C]</MDI>
+      <MDI key="GRIB_VALID_TIME">1704067200</MDI>
+      <MDI key="STATISTICS_MAXIMUM">300.84838867188</MDI>
+      <MDI key="STATISTICS_MEAN">293.23773135451</MDI>
+      <MDI key="STATISTICS_MINIMUM">282.07885742188</MDI>
+      <MDI key="STATISTICS_STDDEV">4.6706725959187</MDI>
+      <MDI key="STATISTICS_VALID_PERCENT">100</MDI>
+    </Metadata>
+  </PAMRasterBand>
+  <PAMRasterBand band="31">
+    <Description>0[-] SFC (Ground or water surface)</Description>
+    <Metadata>
+      <MDI key="GRIB_COMMENT">2 metre temperature [C]</MDI>
+      <MDI key="GRIB_ELEMENT">2T</MDI>
+      <MDI key="GRIB_FORECAST_SECONDS">0</MDI>
+      <MDI key="GRIB_REF_TIME">1704067200</MDI>
+      <MDI key="GRIB_SHORT_NAME">0-SFC</MDI>
+      <MDI key="GRIB_UNIT">[C]</MDI>
+      <MDI key="GRIB_VALID_TIME">1704067200</MDI>
+      <MDI key="STATISTICS_MAXIMUM">301.115234375</MDI>
+      <MDI key="STATISTICS_MEAN">293.16036749881</MDI>
+      <MDI key="STATISTICS_MINIMUM">282.0078125</MDI>
+      <MDI key="STATISTICS_STDDEV">4.6267877951938</MDI>
+      <MDI key="STATISTICS_VALID_PERCENT">100</MDI>
+    </Metadata>
+  </PAMRasterBand>
+  <PAMRasterBand band="32">
+    <Description>0[-] SFC (Ground or water surface)</Description>
+    <Metadata>
+      <MDI key="GRIB_COMMENT">2 metre temperature [C]</MDI>
+      <MDI key="GRIB_ELEMENT">2T</MDI>
+      <MDI key="GRIB_FORECAST_SECONDS">0</MDI>
+      <MDI key="GRIB_REF_TIME">1704067200</MDI>
+      <MDI key="GRIB_SHORT_NAME">0-SFC</MDI>
+      <MDI key="GRIB_UNIT">[C]</MDI>
+      <MDI key="GRIB_VALID_TIME">1704067200</MDI>
+      <MDI key="STATISTICS_MAXIMUM">294.76879882812</MDI>
+      <MDI key="STATISTICS_MEAN">289.41794049084</MDI>
+      <MDI key="STATISTICS_MINIMUM">282.54223632812</MDI>
+      <MDI key="STATISTICS_STDDEV">3.1720747653045</MDI>
+      <MDI key="STATISTICS_VALID_PERCENT">100</MDI>
+    </Metadata>
+  </PAMRasterBand>
+  <PAMRasterBand band="33">
+    <Description>0[-] SFC (Ground or water surface)</Description>
+    <Metadata>
+      <MDI key="GRIB_COMMENT">2 metre temperature [C]</MDI>
+      <MDI key="GRIB_ELEMENT">2T</MDI>
+      <MDI key="GRIB_FORECAST_SECONDS">0</MDI>
+      <MDI key="GRIB_REF_TIME">1704067200</MDI>
+      <MDI key="GRIB_SHORT_NAME">0-SFC</MDI>
+      <MDI key="GRIB_UNIT">[C]</MDI>
+      <MDI key="GRIB_VALID_TIME">1704067200</MDI>
+      <MDI key="STATISTICS_MAXIMUM">298.48706054688</MDI>
+      <MDI key="STATISTICS_MEAN">291.77448123592</MDI>
+      <MDI key="STATISTICS_MINIMUM">283.87573242188</MDI>
+      <MDI key="STATISTICS_STDDEV">3.9037938500635</MDI>
+      <MDI key="STATISTICS_VALID_PERCENT">100</MDI>
+    </Metadata>
+  </PAMRasterBand>
+  <PAMRasterBand band="34">
+    <Description>0[-] SFC (Ground or water surface)</Description>
+    <Metadata>
+      <MDI key="GRIB_COMMENT">2 metre temperature [C]</MDI>
+      <MDI key="GRIB_ELEMENT">2T</MDI>
+      <MDI key="GRIB_FORECAST_SECONDS">0</MDI>
+      <MDI key="GRIB_REF_TIME">1704067200</MDI>
+      <MDI key="GRIB_SHORT_NAME">0-SFC</MDI>
+      <MDI key="GRIB_UNIT">[C]</MDI>
+      <MDI key="GRIB_VALID_TIME">1704067200</MDI>
+      <MDI key="STATISTICS_MAXIMUM">293.2880859375</MDI>
+      <MDI key="STATISTICS_MEAN">288.6303571958</MDI>
+      <MDI key="STATISTICS_MINIMUM">281.8447265625</MDI>
+      <MDI key="STATISTICS_STDDEV">2.8971168752103</MDI>
+      <MDI key="STATISTICS_VALID_PERCENT">100</MDI>
+    </Metadata>
+  </PAMRasterBand>
+  <PAMRasterBand band="35">
+    <Description>0[-] SFC (Ground or water surface)</Description>
+    <Metadata>
+      <MDI key="GRIB_COMMENT">2 metre temperature [C]</MDI>
+      <MDI key="GRIB_ELEMENT">2T</MDI>
+      <MDI key="GRIB_FORECAST_SECONDS">0</MDI>
+      <MDI key="GRIB_REF_TIME">1704067200</MDI>
+      <MDI key="GRIB_SHORT_NAME">0-SFC</MDI>
+      <MDI key="GRIB_UNIT">[C]</MDI>
+      <MDI key="GRIB_VALID_TIME">1704067200</MDI>
+      <MDI key="STATISTICS_MAXIMUM">1.1911269426346</MDI>
+      <MDI key="STATISTICS_MEAN">0.37999519564395</MDI>
+      <MDI key="STATISTICS_MINIMUM">0.10103905200958</MDI>
+      <MDI key="STATISTICS_STDDEV">0.1541050194731</MDI>
+      <MDI key="STATISTICS_VALID_PERCENT">100</MDI>
+    </Metadata>
+  </PAMRasterBand>
+</PAMDataset>
