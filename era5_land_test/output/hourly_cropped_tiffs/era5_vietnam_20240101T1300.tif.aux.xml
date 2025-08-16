@@ -1,0 +1,65 @@
+<PAMDataset>
+  <PAMRasterBand band="1">
+    <Description>2 metre temperature</Description>
+    <Histograms>
+      <HistItem>
+        <HistMin>293.0700927734375</HistMin>
+        <HistMax>294.6496337890625</HistMax>
+        <BucketCount>40</BucketCount>
+        <IncludeOutOfRange>0</IncludeOutOfRange>
+        <Approximate>0</Approximate>
+        <HistCounts>1|0|0|0|0|0|0|0|0|0|0|1|0|0|1|1|1|2|2|4|1|2|2|4|1|4|4|1|2|1|1|0|1|0|0|0|1|0|0|2</HistCounts>
+      </HistItem>
+    </Histograms>
+    <Metadata>
+      <MDI key="STATISTICS_MAXIMUM">294.63037109375</MDI>
+      <MDI key="STATISTICS_MEAN">293.99536132812</MDI>
+      <MDI key="STATISTICS_MINIMUM">293.08935546875</MDI>
+      <MDI key="STATISTICS_STDDEV">0.28130092159869</MDI>
+      <MDI key="STATISTICS_VALID_PERCENT">100</MDI>
+    </Metadata>
+  </PAMRasterBand>
+  <PAMRasterBand band="2">
+    <Description>Total precipitation</Description>
+    <Histograms>
+      <HistItem>
+        <HistMin>1.221839279423875e-05</HistMin>
+        <HistMax>0.0003473078714250733</HistMax>
+        <BucketCount>40</BucketCount>
+        <IncludeOutOfRange>0</IncludeOutOfRange>
+        <Approximate>0</Approximate>
+        <HistCounts>1|1|1|0|4|0|3|2|1|0|1|1|4|2|0|1|0|2|0|1|0|1|2|3|2|0|2|0|0|0|0|0|1|0|1|0|1|1|0|1</HistCounts>
+      </HistItem>
+    </Histograms>
+    <Metadata>
+      <MDI key="STATISTICS_MAXIMUM">0.0003432214143686</MDI>
+      <MDI key="STATISTICS_MEAN">0.00014914032117304</MDI>
+      <MDI key="STATISTICS_MINIMUM">1.6304849850712e-05</MDI>
+      <MDI key="STATISTICS_STDDEV">8.8006761547998e-05</MDI>
+      <MDI key="STATISTICS_VALID_PERCENT">100</MDI>
+    </Metadata>
+  </PAMRasterBand>
+  <PAMRasterBand band="3">
+    <Description>10 metre U wind component</Description>
+    <Histograms>
+      <HistItem>
+        <HistMin>-2.7649658203125</HistMin>
+        <HistMax>-1.42015380859375</HistMax>
+        <BucketCount>40</BucketCount>
+        <IncludeOutOfRange>0</IncludeOutOfRange>
+        <Approximate>0</Approximate>
+        <HistCounts>1|1|2|1|2|3|1|3|2|6|1|1|2|0|1|1|1|2|0|0|0|3|0|0|0|1|1|1|0|0|0|1|1|0|0|0|0|0|0|1</HistCounts>
+      </HistItem>
+    </Histograms>
+    <Metadata>
+      <MDI key="STATISTICS_MAXIMUM">-1.4365539550781</MDI>
+      <MDI key="STATISTICS_MEAN">-2.3308044433594</MDI>
+      <MDI key="STATISTICS_MINIMUM">-2.7485656738281</MDI>
+      <MDI key="STATISTICS_STDDEV">0.31096466343567</MDI>
+      <MDI key="STATISTICS_VALID_PERCENT">100</MDI>
+    </Metadata>
+  </PAMRasterBand>
+  <PAMRasterBand band="4">
+    <Description>10 metre V wind component</Description>
+  </PAMRasterBand>
+</PAMDataset>
