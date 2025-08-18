@@ -250,33 +250,34 @@ class GEECrawler:
             print(f"No GeoTIFF files to combine in {temp_dir}")
             return False
 
-        # Attempt to order bands based on the requested bands_order
+        # --- ROBUST BAND ORDERING FIX ---
+        # 1. Find all .tif files and extract their GEE band names from filenames.
+        #    e.g., from '.../export.temperature_2m.tif' -> 'temperature_2m'
+        found_bands_map = {} # dict of clean_band_name -> full_path
+        for tif_path_str in tif_files:
+            path_obj = Path(tif_path_str)
+            # GEE filenames are like `export.temperature_2m.tif`
+            band_name_from_file = path_obj.stem.split('.')[-1]
+            found_bands_map[band_name_from_file] = temp_dir / path_obj
+
+        # 2. Create the ordered lists based on the original `bands_order` request,
+        #    ensuring data and descriptions are perfectly synchronized.
         ordered_tifs = []
-        for b in bands_order:
-            # Find the tif file that contains the band name in its filename
-            match = next((t for t in tif_files if b.replace('_hourly', '') in Path(t).stem), None) # Handle _hourly suffix
-            if match:
-                ordered_tifs.append(temp_dir / match)
-            else:
-                print(f"  Warning: Could not find TIFF for band '{b}' in downloaded files.")
-                # If a band is explicitly not found, remove it from bands_order as it won't be in the output
-                # This means the resulting multi-band TIFF might have fewer bands than requested if some didn't download
-                # Or handle as an error if all bands are strictly required
+        ordered_gee_band_names = []
+        for requested_band in bands_order:
+            if requested_band in found_bands_map:
+                ordered_tifs.append(found_bands_map[requested_band])
+                ordered_gee_band_names.append(requested_band) # Use the original name (e.g. with _hourly)
+
+        if len(ordered_tifs) != len(found_bands_map):
+             print(f"  Warning: Mismatch between requested bands ({len(bands_order)}) and found tif files ({len(found_bands_map)}). "
+                   f"Proceeding with {len(ordered_tifs)} matched bands.")
+        # --- END OF FIX ---
 
         if not ordered_tifs:
             print(f"No matching GeoTIFF files found for requested bands in {temp_dir}.")
             return False
             
-        # Fallback if ordering failed or some bands were not found: use all extracted tifs in alphabetical order
-        if len(ordered_tifs) != len(bands_order):
-            # Filter out any non-tif files from the list provided
-            all_tifs_in_temp = sorted([f for f in temp_dir.iterdir() if f.suffix == '.tif'])
-            print(f"  Using default alphabetical order for bands: {len(all_tifs_in_temp)} files found.")
-            if not all_tifs_in_temp:
-                print(f"  No GeoTIFFs found in temp directory: {temp_dir}")
-                return False
-            ordered_tifs = all_tifs_in_temp
-
         # Create a reverse map to get CDS-style names from GEE band names
         reverse_gee_map = {v: k for k, v in GEE_VARIABLE_MAP.items()}
 
@@ -302,8 +303,8 @@ class GEECrawler:
                 for idx, arr in enumerate(band_arrays, start=1):
                     dst.write(arr, idx)
                     # Set band description using the original CDS variable name
-                    if idx - 1 < len(bands_order):
-                        gee_band_name = bands_order[idx-1]
+                    if idx - 1 < len(ordered_gee_band_names):
+                        gee_band_name = ordered_gee_band_names[idx-1]
                         # Get the original CDS variable name, or fallback to GEE name if not found
                         cds_variable_name = reverse_gee_map.get(gee_band_name, gee_band_name)
                         dst.set_band_description(idx, cds_variable_name)
@@ -357,13 +358,14 @@ class GEECrawler:
 
             # Define the UTC date range for the current local day
             utc_start_request_dt = local_date - timedelta(hours=timezone_offset_hours)
-            # End of local day is 23:59:59. Convert to UTC.
-            utc_end_request_dt = (local_date + timedelta(days=1)) - timedelta(hours=timezone_offset_hours) - timedelta(seconds=1)
+            # GEE's filterDate has an EXCLUSIVE end date. So, to get all data for a 24-hour local day,
+            # the end of the filter range should be exactly 24 hours after the start.
+            utc_filter_end_dt = utc_start_request_dt + timedelta(days=1)
 
             print(f"Processing GEE data for local date {local_date.strftime('%Y-%m-%d')}...")
 
             daily_images_collection = era5_land.filterDate(utc_start_request_dt.strftime('%Y-%m-%dT%H:%M:%S'), 
-                                                         utc_end_request_dt.strftime('%Y-%m-%dT%H:%M:%S')) \
+                                                         utc_filter_end_dt.strftime('%Y-%m-%dT%H:%M:%S')) \
                                             .filterBounds(region_geometry) \
                                             .select(gee_bands)
             
@@ -509,6 +511,6 @@ if __name__ == "__main__":
     #     timezone_offset_hours=7, # Vietnam timezone offset
     #     months_to_crawl=months_to_download # Add this line
     # )
-    # print("GEE direct download process initiated/completed.")
+    print("GEE direct download process initiated/completed.")
 
     print("\nMain execution complete.")

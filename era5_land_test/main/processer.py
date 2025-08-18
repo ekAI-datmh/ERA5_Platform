@@ -318,21 +318,18 @@ class ERA5LandProcessor:
             print(f"    GEE data_var Bounds: {gee_data_var.rio.bounds()}")
             print(f"    GEE data_var Shape: {gee_data_var.shape}")
 
-            # Align CDS data grid to match the GEE data grid using xarray.interp
-            print("    Aligning CDS grid to match GEE grid using xarray.interp...")
-            # Interpolate CDS data onto GEE's coordinates (latitude and longitude)
-            cds_aligned = cds_data_var.interp(
-                coords={'latitude': gee_data_var.y, 'longitude': gee_data_var.x},
-                method="linear", # Or "nearest" if you prefer nearest-neighbor interpolation
-                kwargs={"fill_value": np.nan} # Fill values outside original grid with NaN
+            # Align CDS data grid to match GEE grid using rioxarray.reproject_match.
+            # This is more robust than simple interpolation as it handles differences
+            # in CRS, grid resolution, and alignment (affine transform).
+            print("    Aligning CDS grid to match GEE grid using rioxarray.reproject_match...")
+            cds_aligned = cds_data_var.rio.reproject_match(
+                gee_data_var,
+                resampling=Resampling.bilinear,  # Use bilinear for continuous data like temperature
+                nodata=np.nan
             )
-            
-            # Re-assert CRS and spatial dimensions after interpolation, as interp might drop it.
-            cds_aligned = cds_aligned.rio.set_spatial_dims(x_dim='x', y_dim='y')
-            cds_aligned = cds_aligned.rio.write_crs(cds_data_var.rio.crs) # Use original CRS
 
-            print(f"    CDS aligned CRS after interp: {cds_aligned.rio.crs}")
-            print(f"    CDS aligned Dims after interp: {cds_aligned.dims}")
+            print(f"    CDS aligned CRS after reproject_match: {cds_aligned.rio.crs}")
+            print(f"    CDS aligned Dims after reproject_match: {cds_aligned.dims}")
 
             # Get numpy arrays for comparison
             cds_vals = cds_aligned.values
