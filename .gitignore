@@ -1,4 +1,6 @@
 .cursorignore
-erera5_land_test/__pycache__
+era5_land_test/__pycache__
+era5_land_test/data_*
+era5_land_test/data
 era5_land_test/venv
 era5_land_module/__pycache__

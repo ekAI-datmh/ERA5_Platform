@@ -61,5 +61,12 @@
   </PAMRasterBand>
   <PAMRasterBand band="4">
     <Description>10 metre V wind component</Description>
+    <Metadata>
+      <MDI key="STATISTICS_MAXIMUM">2.3009834289551</MDI>
+      <MDI key="STATISTICS_MEAN">1.9238227844238</MDI>
+      <MDI key="STATISTICS_MINIMUM">1.3156318664551</MDI>
+      <MDI key="STATISTICS_STDDEV">0.2220845666637</MDI>
+      <MDI key="STATISTICS_VALID_PERCENT">100</MDI>
+    </Metadata>
   </PAMRasterBand>
 </PAMDataset>
