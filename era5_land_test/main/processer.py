@@ -7,6 +7,7 @@ from datetime import datetime, timedelta # For date calculations
 import warnings
 from rasterio.enums import Resampling # For reproject_match
 import rasterio
+from typing import Optional # Added for Optional type hint
 
 # --- Global Configuration ---
 
@@ -91,6 +92,97 @@ class ERA5LandProcessor:
         # Filename is based on the local date, as set by the crawler
         file_path = base_dir / str(year) / f"{month:02d}" / f"era5_vietnam_{date_dt.strftime('%Y_%m_%d')}.nc"
         return file_path
+
+    def _get_cumulative_gee_precipitation(self, comparison_dt: datetime, gee_data_dir: Path) -> Optional[xr.DataArray]:
+        """
+        Calculates the cumulative total precipitation from GEE hourly GeoTIFFs up to the comparison hour.
+        GEE provides 'total_precipitation_hourly' as incremental, while CDS has cumulative 'total_precipitation'.
+        """
+        print(f"  Calculating cumulative GEE precipitation for {comparison_dt.isoformat()}...")
+        
+        # Define the local date for which we need to sum hourly files
+        local_date = comparison_dt.replace(hour=0, minute=0, second=0, microsecond=0)
+        month_output_dir = gee_data_dir / str(local_date.year) / f"{local_date.month:02d}"
+
+        cumulative_precip_data = None
+        target_shape = None
+        target_transform = None
+        target_crs = None
+
+        # Iterate from 00:00 up to the comparison_dt.hour (inclusive)
+        for h in range(comparison_dt.hour + 1):
+            current_hour_dt = local_date + timedelta(hours=h)
+            gee_tif_filename = f"era5_vietnam_GEE_{current_hour_dt.strftime('%Y%m%dT%H%M')}.tif"
+            gee_tif_path = month_output_dir / gee_tif_filename
+
+            if not gee_tif_path.exists():
+                print(f"    GEE hourly precipitation file not found: {gee_tif_path}. Cannot calculate cumulative precipitation.")
+                return None
+
+            try:
+                with rioxarray.open_rasterio(gee_tif_path, masked=True) as ds_hourly_gee:
+                    # Find the correct precipitation band (total_precipitation_hourly)
+                    # Assuming it's in the band descriptions if combined correctly
+                    tp_hourly_gee_da = None
+                    if 'variable' in ds_hourly_gee.dims: # Check if bands were renamed to 'variable'
+                        if 'total_precipitation_hourly' in ds_hourly_gee['variable'].values:
+                            tp_hourly_gee_da = ds_hourly_gee.sel(variable='total_precipitation_hourly')
+                    else: # Fallback if bands were not renamed, try to find by description or band index
+                        # This is a bit fragile, relies on naming conventions or knowledge of band order
+                        # For now, assume it's correctly named 'total_precipitation_hourly' in a band description
+                        for band_idx, desc in enumerate(ds_hourly_gee.attrs.get('descriptions', [])):
+                            if desc == 'total_precipitation_hourly':
+                                tp_hourly_gee_da = ds_hourly_gee.isel(band=band_idx) # Select by index if no 'variable' dim
+                                break
+                        if tp_hourly_gee_da is None and 'total_precipitation_hourly' in ds_hourly_gee.data_vars:
+                             tp_hourly_gee_da = ds_hourly_gee['total_precipitation_hourly']
+
+                    if tp_hourly_gee_da is None:
+                        print(f"    'total_precipitation_hourly' band not found in {gee_tif_path}. Skipping this hour for accumulation.")
+                        continue
+                    
+                    # Ensure the DataArray has spatial dims and CRS
+                    if tp_hourly_gee_da.rio.crs is None:
+                        tp_hourly_gee_da = tp_hourly_gee_da.rio.write_crs("EPSG:4326")
+                    if 'y' in tp_hourly_gee_da.dims and 'x' in tp_hourly_gee_da.dims:
+                        tp_hourly_gee_da = tp_hourly_gee_da.rio.set_spatial_dims(x_dim='x', y_dim='y')
+                    else:
+                         print(f"    Warning: GEE precipitation data missing y/x spatial dimensions for {gee_tif_path.name}. Reprojection may fail.")
+
+                    # For the first hour, initialize cumulative_precip_data
+                    if cumulative_precip_data is None:
+                        cumulative_precip_data = tp_hourly_gee_da.copy()
+                        target_shape = tp_hourly_gee_da.shape
+                        target_transform = tp_hourly_gee_da.rio.transform()
+                        target_crs = tp_hourly_gee_da.rio.crs
+                    else:
+                        # Ensure current hourly data matches the grid of the cumulative data
+                        # Use reproject_match to align them before summing
+                        if not (tp_hourly_gee_da.rio.crs == target_crs and 
+                                tp_hourly_gee_da.rio.transform() == target_transform and
+                                tp_hourly_gee_da.shape == target_shape):
+                            # print(f"    Aligning {gee_tif_path.name} to cumulative grid for summation.")
+                            tp_hourly_gee_da_aligned = tp_hourly_gee_da.rio.reproject_match(
+                                xr.DataArray(np.zeros(target_shape), 
+                                             coords={'y': cumulative_precip_data.y, 'x': cumulative_precip_data.x}, 
+                                             dims=['y','x']).rio.write_crs(target_crs),
+                                resampling=Resampling.nearest, # Nearest is fine for sums of discrete values
+                                nodata=np.nan
+                            )
+                            cumulative_precip_data += tp_hourly_gee_da_aligned
+                        else:
+                            cumulative_precip_data += tp_hourly_gee_da
+
+            except Exception as e:
+                print(f"    Error processing GEE hourly precipitation file {gee_tif_path}: {e}")
+                return None
+        
+        if cumulative_precip_data is not None: 
+            # Ensure the final cumulative data array has correct spatial context
+            cumulative_precip_data = cumulative_precip_data.rio.set_spatial_dims(x_dim='x', y_dim='y')
+            cumulative_precip_data = cumulative_precip_data.rio.write_crs(target_crs)
+        
+        return cumulative_precip_data
 
     def process_time_series_to_geotiffs(
         self,
@@ -261,7 +353,11 @@ class ERA5LandProcessor:
                 # Then rename the dimension and its coordinate
                 gee_ds = gee_ds.rename({'band': 'variable'})
             else:
-                raise ValueError("Band descriptions not found or length mismatch in GEE GeoTIFF.")
+                # If no descriptions or mismatch, fallback to default band names
+                print(f"  Warning: Band descriptions not found or length mismatch in GEE GeoTIFF for {gee_tif_path.name}. Bands might be named 'band_data'.")
+                # Create generic variable names based on band index if renaming failed
+                gee_ds = gee_ds.assign_coords(band=[f"band_{i+1}" for i in range(len(gee_ds.coords['band']))])
+                gee_ds = gee_ds.rename({'band': 'variable'})
 
             print(f"  ✅ Loaded GEE data from: {gee_tif_path.name}")
         except Exception as e:
@@ -273,6 +369,11 @@ class ERA5LandProcessor:
         # Iterate through variables found in the CDS NetCDF slice
         for var_short_name in cds_hourly_slice.data_vars:
             var_short_name_str = str(var_short_name)
+
+            # Skip total_precipitation (tp) as it's handled separately
+            if var_short_name_str == 'tp':
+                continue
+            
             var_long_name = CDS_SHORT_TO_LONG_NAME_MAP.get(var_short_name_str)
             
             if not var_long_name or var_long_name not in gee_ds['variable'].values:
@@ -310,6 +411,7 @@ class ERA5LandProcessor:
             print(f"    CDS data_var Resolution: {cds_data_var.rio.resolution()}")
             print(f"    CDS data_var Bounds: {cds_data_var.rio.bounds()}")
             print(f"    CDS data_var Shape: {cds_data_var.shape}")
+            print(f"    CDS data_var Non-NaN count before reproject: {np.count_nonzero(~np.isnan(cds_data_var.values))}")
 
             print(f"    GEE data_var CRS before reproject: {gee_data_var.rio.crs}")
             print(f"    GEE data_var Dims before reproject: {gee_data_var.dims}")
@@ -317,6 +419,7 @@ class ERA5LandProcessor:
             print(f"    GEE data_var Resolution: {gee_data_var.rio.resolution()}")
             print(f"    GEE data_var Bounds: {gee_data_var.rio.bounds()}")
             print(f"    GEE data_var Shape: {gee_data_var.shape}")
+            print(f"    GEE data_var Non-NaN count before reproject: {np.count_nonzero(~np.isnan(gee_data_var.values))}")
 
             # Align CDS data grid to match GEE grid using rioxarray.reproject_match.
             # This is more robust than simple interpolation as it handles differences
@@ -330,11 +433,12 @@ class ERA5LandProcessor:
 
             print(f"    CDS aligned CRS after reproject_match: {cds_aligned.rio.crs}")
             print(f"    CDS aligned Dims after reproject_match: {cds_aligned.dims}")
+            print(f"    CDS aligned Non-NaN count after reproject_match: {np.count_nonzero(~np.isnan(cds_aligned.values))}")
 
             # Get numpy arrays for comparison
             cds_vals = cds_aligned.values
             gee_vals = gee_data_var.values.squeeze() # Squeeze to remove single band dimension if present
-            
+
             # --- Apply Unit Conversions if necessary (after alignment and before comparison/filtering) ---
             # ERA5-Land temperature (t2m, d2m, skt) is often in Kelvin (K).
             # If GEE data is also in Kelvin, convert both to Celsius for more interpretable comparison.
@@ -362,8 +466,10 @@ class ERA5LandProcessor:
                 comparison_min = -50  # Celsius
                 comparison_max = 50   # Celsius
             elif var_short_name_str in ['slhf', 'sshf']:
-                comparison_min = -5000 # W/m^2 (fluxes can be negative)
-                comparison_max = 5000  # W/m^2
+                # Temporarily remove bounds to debug pixel count issue
+                comparison_min = -np.inf 
+                comparison_max = np.inf
+                print(f"    WARNING: Temporarily removed value range filter for {var_short_name_str} to debug pixel count.")
             elif var_short_name_str in ['ssr', 'ssrd']:
                 comparison_min = 0     # J/m^2 (solar radiation is non-negative)
                 comparison_max = 2_000_000 # Max typical hourly accumulated solar radiation
@@ -373,9 +479,19 @@ class ERA5LandProcessor:
             elif var_short_name_str in ['u10', 'v10']:
                 comparison_min = -50 # m/s (wind components)
                 comparison_max = 50 # m/s
-            elif var_short_name_str in ['pev', 'e', 'tp']:
-                comparison_min = 0.0 # meters (accumulated evaporation/precipitation)
+            elif var_short_name_str in ['pev', 'e']:
+                comparison_min = -0.001 # meters (accumulated evaporation - can be slightly negative due to precision)
                 comparison_max = 0.1 # 100mm per hour - very high, but covers extremes
+            # Note: total_precipitation (tp) is handled separately due to accumulation differences
+
+            # Add more detailed NaN and validity checks before masking
+            print(f"    CDS non-NaN count before value filter: {np.count_nonzero(~np.isnan(cds_vals))}")
+            print(f"    GEE non-NaN count before value filter: {np.count_nonzero(~np.isnan(gee_vals))}")
+
+            # --- Debugging: Print sample values for pev, e, slhf, sshf if relevant ---
+            if var_short_name_str in ['pev', 'e', 'slhf', 'sshf']:
+                print(f"    Sample CDS filtered values ({cds_filtered.size} pixels): {cds_filtered.flatten()[:20]}")
+                print(f"    Sample GEE filtered values ({gee_filtered.size} pixels): {gee_filtered.flatten()[:20]}")
 
             mask = (
                 (cds_vals >= comparison_min) & (cds_vals <= comparison_max) &
@@ -385,10 +501,14 @@ class ERA5LandProcessor:
             
             cds_filtered = cds_vals[mask]
             gee_filtered = gee_vals[mask]
-            
-            if cds_filtered.size == 0:
-                print(f"    No valid overlapping pixels found in the range [{comparison_min}, {comparison_max}].")
-                results[var_short_name_str] = {'mae': None, 'rmse': None, 'compared_pixels': 0, 'status': 'NO_COMPARABLE_PIXELS'}
+
+            print(f"    CDS filtered non-NaN count: {cds_filtered.size}")
+            print(f"    GEE filtered non-NaN count: {gee_filtered.size}")
+
+            # Add a check for all NaNs after filtering as well
+            if np.all(np.isnan(cds_filtered)) or cds_filtered.size == 0:
+                print(f"    ⚠️ Warning: No valid overlapping pixels found after value range filtering for '{var_short_name_str}'. Skipping comparison.")
+                results[var_short_name_str] = {'mae': None, 'rmse': None, 'compared_pixels': 0, 'status': 'NO_COMPARABLE_PIXELS_AFTER_FILTERING'}
                 continue
             
             # Calculate metrics
@@ -400,6 +520,69 @@ class ERA5LandProcessor:
             print(f"    Compared Pixels: {cds_filtered.size}")
             print(f"    MAE: {mae:.4f}")
             print(f"    RMSE: {rmse:.4f}")
+
+        # --- Special handling for total_precipitation (tp) ---
+        # This variable requires cumulative summation for GEE data
+        var_short_name_tp = 'tp'
+        var_long_name_tp = CDS_SHORT_TO_LONG_NAME_MAP.get(var_short_name_tp)
+
+        if var_long_name_tp and var_short_name_tp in cds_hourly_slice.data_vars:
+            print(f"\n  --- Comparing variable: {var_short_name_tp} (Cumulative from GEE) ---")
+            cds_tp_data_var = cds_hourly_slice[var_short_name_tp]
+            cds_tp_data_var = cds_tp_data_var.rio.set_spatial_dims(x_dim='longitude', y_dim='latitude')
+            cds_tp_data_var = cds_tp_data_var.rio.write_crs("EPSG:4326")
+
+            # Get cumulative GEE precipitation up to the comparison hour
+            cumulative_gee_tp_da = self._get_cumulative_gee_precipitation(comparison_dt, gee_data_dir)
+
+            if cumulative_gee_tp_da is None:
+                print(f"    ❌ Error: Could not get cumulative GEE precipitation for {comparison_dt.isoformat()}. Skipping comparison for '{var_short_name_tp}'.")
+                results[var_short_name_tp] = {'mae': None, 'rmse': None, 'compared_pixels': 0, 'status': 'GEE_TP_ACCUMULATION_FAILED'}
+            else:
+                # Align CDS TP data to the GEE cumulative TP grid
+                cds_tp_aligned = cds_tp_data_var.rio.reproject_match(
+                    cumulative_gee_tp_da,
+                    resampling=Resampling.bilinear, 
+                    nodata=np.nan
+                )
+
+                cds_tp_vals = cds_tp_aligned.values
+                gee_tp_vals = cumulative_gee_tp_da.values.squeeze()
+
+                # Debugging prints for tp
+                print(f"    CDS tp non-NaN count before reproject: {np.count_nonzero(~np.isnan(cds_tp_data_var.values))}")
+                print(f"    GEE tp non-NaN count before reproject: {np.count_nonzero(~np.isnan(cumulative_gee_tp_da.values))}")
+                print(f"    CDS tp aligned non-NaN count: {np.count_nonzero(~np.isnan(cds_tp_aligned.values))}")
+                print(f"    Sample CDS tp values (first 5): {cds_tp_vals.flatten()[:5]}")
+                print(f"    Sample GEE tp values (first 5): {gee_tp_vals.flatten()[:5]}")
+
+                # Apply value range filter for precipitation (meters)
+                tp_comparison_min = -0.001 # Allow slightly negative due to precision
+                tp_comparison_max = 0.1 # 100mm per hour
+
+                tp_mask = (
+                    (cds_tp_vals >= tp_comparison_min) & (cds_tp_vals <= tp_comparison_max) &
+                    (gee_tp_vals >= tp_comparison_min) & (gee_tp_vals <= tp_comparison_max) &
+                    (~np.isnan(cds_tp_vals)) & (~np.isnan(gee_tp_vals))
+                )
+
+                cds_tp_filtered = cds_tp_vals[tp_mask]
+                gee_tp_filtered = gee_tp_vals[tp_mask]
+
+                print(f"    CDS tp filtered non-NaN count: {cds_tp_filtered.size}")
+                print(f"    GEE tp filtered non-NaN count: {gee_tp_filtered.size}")
+
+                if cds_tp_filtered.size == 0:
+                    print(f"    ⚠️ Warning: No valid overlapping pixels found for 'tp' after value range filtering. Skipping comparison.")
+                    results[var_short_name_tp] = {'mae': None, 'rmse': None, 'compared_pixels': 0, 'status': 'NO_COMPARABLE_TP_PIXELS_AFTER_FILTERING'}
+                else:
+                    mae_tp = np.mean(np.abs(cds_tp_filtered - gee_tp_filtered))
+                    rmse_tp = np.sqrt(np.mean((cds_tp_filtered - gee_tp_filtered)**2))
+                    results[var_short_name_tp] = {'mae': mae_tp, 'rmse': rmse_tp, 'compared_pixels': cds_tp_filtered.size, 'status': 'COMPLETED'}
+
+                    print(f"    Compared Pixels: {cds_tp_filtered.size}")
+                    print(f"    MAE: {mae_tp:.4f}")
+                    print(f"    RMSE: {rmse_tp:.4f}")
 
         return results
 

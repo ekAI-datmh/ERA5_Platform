@@ -9,6 +9,7 @@ from pathlib import Path
 from datetime import datetime, timedelta
 import time
 import xarray as xr # Added for merging NetCDF files
+from itertools import islice # Added for limiting iteration
 
 # --- GEE Specific Imports ---
 import ee # Google Earth Engine API
@@ -35,7 +36,7 @@ GEE_VARIABLE_MAP = {
     "10m_u_component_of_wind": "u_component_of_wind_10m",
     "10m_v_component_of_wind": "v_component_of_wind_10m",
     "surface_pressure": "surface_pressure",
-    "total_precipitation": "total_precipitation_hourly" # GEE specific name for this variable
+    # "total_precipitation": "total_precipitation_hourly" # GEE specific name for this variable - handled separately due to accumulation type
 }
 
 def generate_local_dates(year: int):
@@ -110,23 +111,23 @@ class CDSAPICrawler:
         hourly_interval: int = 1, # Default to all 24 hours per day
         time_delay_seconds: int = 2,
         timezone_offset_hours: int = 0, # Offset from UTC (e.g., 7 for Vietnam)
-        months_to_crawl: Optional[list[int]] = None # New: List of months (1-12) to crawl, defaults to all if None
+        months_to_crawl: Optional[list[int]] = None, # New: List of months (1-12) to crawl, defaults to all if None
+        limit_days: Optional[int] = None # New: Limit the number of days to crawl
     ):
         client = self.get_client()
         
         print(f"\n--- Starting CDS API Download for year {year} ---")
-        print(f"  Output directory: {base_output_dir}")
-        print(f"  Variables: {variables_cds}")
-        print(f"  Area: {area}")
-        print(f"  Timezone Offset: UTC{'+' if timezone_offset_hours >= 0 else ''}{timezone_offset_hours} hours")
-        print(f"  Note: CDS data will cover 00:00-23:59 local time, spanning UTC days as needed.")
-        print(f"  Months to crawl: {months_to_crawl if months_to_crawl else 'All months'}")
         
         # Ensure base output directory exists for local files
         base_output_dir.mkdir(parents=True, exist_ok=True)
         
         # Iterate through specified months, or all 12 if not provided
-        for local_date in generate_local_dates(year):
+        # Apply limit_days if specified
+        dates_iterator = generate_local_dates(year)
+        if limit_days is not None:
+            dates_iterator = islice(dates_iterator, limit_days)
+
+        for local_date in dates_iterator:
             if months_to_crawl and local_date.month not in months_to_crawl:
                 continue # Skip if current month is not in the list
 
@@ -134,8 +135,6 @@ class CDSAPICrawler:
             month_output_dir.mkdir(parents=True, exist_ok=True)
 
             output_filename_extracted = month_output_dir / f'era5_vietnam_{local_date.strftime("%Y_%m_%d")}.nc'
-
-            print(f"Processing for local date {local_date.strftime('%Y-%m-%d')}... ")
 
             if output_filename_extracted.exists():
                 print(f"File already exists: {output_filename_extracted}. Skipping download.")
@@ -323,16 +322,18 @@ class GEECrawler:
         hourly_interval: int = 1, # GEE provides hourly data, so typically 1.
         time_delay_seconds: int = 0.5,
         timezone_offset_hours: int = 0, # Offset from UTC (e.g., 7 for Vietnam)
-        months_to_crawl: Optional[list[int]] = None # New: List of months (1-12) to crawl, defaults to all if None
+        months_to_crawl: Optional[list[int]] = None, # New: List of months (1-12) to crawl, defaults to all if None
+        limit_days: Optional[int] = None # New: Limit the number of days to crawl
     ):
 
         print(f"\n--- Starting GEE Direct Download for year {year} ---")
-        print(f"  Output directory: {base_output_dir}")
-        print(f"  Variables (CDS names): {variables_cds}")
-        print(f"  Area: {area}")
-        print(f"  Timezone Offset: UTC{'+' if timezone_offset_hours >= 0 else ''}{timezone_offset_hours} hours")
-        print(f"  Note: GEE data will cover 00:00-23:59 local time.")
-        print(f"  Months to crawl: {months_to_crawl if months_to_crawl else 'All months'}")
+        # print(f"  Output directory: {base_output_dir}") # Removed redundant print
+        # print(f"  Variables (CDS names): {variables_cds}") # Removed redundant print
+        # print(f"  Area: {area}") # Removed redundant print
+        # print(f"  Timezone Offset: UTC{'+' if timezone_offset_hours >= 0 else ''}{timezone_offset_hours} hours") # Removed redundant print
+        # print(f"  Note: GEE data will cover 00:00-23:59 local time.") # Removed redundant print
+        # print(f"  Months to crawl: {months_to_crawl if months_to_crawl else 'All months'}") # Removed redundant print
+        # print(f"  Limit days for testing: {limit_days if limit_days else 'No limit'}") # Removed redundant print
 
         # Ensure local base output directory exists
         base_output_dir.mkdir(parents=True, exist_ok=True)
@@ -344,12 +345,17 @@ class GEECrawler:
 
         # Map CDS variable names to GEE band names
         gee_bands = [GEE_VARIABLE_MAP.get(v, v) for v in variables_cds]
-        print(f"  GEE Bands to request: {gee_bands}")
+        # print(f"  GEE Bands to request: {gee_bands}") # Removed redundant print
 
         # Get the ERA5-Land Image Collection
         era5_land = ee.ImageCollection(ERA5_LAND_GEE_DATASET)
 
-        for local_date in generate_local_dates(year):
+        # Apply limit_days if specified
+        dates_iterator = generate_local_dates(year)
+        if limit_days is not None:
+            dates_iterator = islice(dates_iterator, limit_days)
+
+        for local_date in dates_iterator:
             if months_to_crawl and local_date.month not in months_to_crawl:
                 continue # Skip if current month is not in the list
 
@@ -362,7 +368,7 @@ class GEECrawler:
             # the end of the filter range should be exactly 24 hours after the start.
             utc_filter_end_dt = utc_start_request_dt + timedelta(days=1)
 
-            print(f"Processing GEE data for local date {local_date.strftime('%Y-%m-%d')}...")
+            # print(f"Processing GEE data for local date {local_date.strftime('%Y-%m-%d')}...") # Removed redundant print
 
             daily_images_collection = era5_land.filterDate(utc_start_request_dt.strftime('%Y-%m-%dT%H:%M:%S'), 
                                                          utc_filter_end_dt.strftime('%Y-%m-%dT%H:%M:%S')) \
@@ -377,7 +383,7 @@ class GEECrawler:
                 print(f"No GEE hourly data found for {local_date.strftime('%Y-%m-%d')}. Skipping.")
                 continue
             
-            print(f"Found {num_images} hourly images for {local_date.strftime('%Y-%m-%d')}. Downloading...")
+            # print(f"Found {num_images} hourly images for {local_date.strftime('%Y-%m-%d')}. Downloading...") # Removed redundant print
 
             temp_download_dir = month_output_dir / 'temp_gee_downloads'
             temp_download_dir.mkdir(exist_ok=True)
@@ -491,26 +497,28 @@ if __name__ == "__main__":
         hourly_interval=1, # Download all 24 hours per day
         time_delay_seconds=2,
         timezone_offset_hours=7, # Vietnam timezone offset
-        months_to_crawl=months_to_download # Add this line
+        months_to_crawl=months_to_download, # Add this line
+        limit_days=1 # Limit to 1 day for testing
     )
     print("CDS API download process initiated/completed.")
 
-    # # --- Initialize GEE Crawler ---
-    # print("\nInitializing GEE Crawler...")
-    # gee_crawler = GEECrawler()
+    # --- Initialize GEE Crawler ---
+    print("\nInitializing GEE Crawler...")
+    gee_crawler = GEECrawler()
 
-    # # --- Run GEE Download (initiates export tasks) ---
-    # print("\n--- Starting GEE Direct Data Download ---")
-    # gee_crawler.download_era5_land_series(
-    #     year=download_year,
-    #     base_output_dir=gee_output_root_dir,
-    #     variables_cds=era5_land_variables_long_form,
-    #     area=vietnam_bbox_area,
-    #     hourly_interval=1, # Ensure GEE downloads all hourly data
-    #     time_delay_seconds=0.5,
-    #     timezone_offset_hours=7, # Vietnam timezone offset
-    #     months_to_crawl=months_to_download # Add this line
-    # )
+    # --- Run GEE Download (initiates export tasks) ---
+    print("\n--- Starting GEE Direct Data Download ---")
+    gee_crawler.download_era5_land_series(
+        year=download_year,
+        base_output_dir=gee_output_root_dir,
+        variables_cds=era5_land_variables_long_form,
+        area=vietnam_bbox_area,
+        hourly_interval=1, # Ensure GEE downloads all hourly data
+        time_delay_seconds=0.5,
+        timezone_offset_hours=7, # Vietnam timezone offset
+        months_to_crawl=months_to_download, # Add this line
+        limit_days=1 # Limit to 1 day for testing
+    )
     print("GEE direct download process initiated/completed.")
 
     print("\nMain execution complete.")
